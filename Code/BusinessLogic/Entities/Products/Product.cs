@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Entities.Products
 {
-    internal class Product
+    public class Product
     {
         public Product()
         {

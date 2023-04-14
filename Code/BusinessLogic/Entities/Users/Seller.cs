@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic.Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,32 +9,35 @@ namespace BusinessLogic.Entities.Users
 {
     public class Seller : IUser
     {
+        public OrderHandleSystem orderHandleSystem { get; }
+
         public string Login { get; set; }
 
         public string Password { get; set; }
 
         public List<Guid>? Bucket { get; private set; }
 
-        public Order? CurrentOrder { get; private set; }
-
         public Roles Role { get; private set; }
+        public string FullName { get; set; }
 
-        public Seller(string login, string password, List<Order> userOrders, List<Guid> bucket)
+        public Seller(string login, string password, List<Order> userOrders, List<Guid> bucket, string fullName, OrderHandleSystem orderHandleSystem)
         {
             Login = login;
             Password = password;
             Bucket = bucket;
             Role = Roles.seller;
+            FullName = fullName;
+            this.orderHandleSystem = orderHandleSystem;
         }
 
-        public void CancelOrder(Order order)
+        public bool CancelOrder(Guid id)
         {
-            throw new NotImplementedException();
+            return orderHandleSystem.ReturnOrder(id);
         }
 
-        public void CreateOrder(string buyerFullName)
+        public Order CreateOrder(string buyerFullName)
         {
-            throw new NotImplementedException();
+            return orderHandleSystem.CreateOrder(Login, buyerFullName, Bucket);
         }
     }
 

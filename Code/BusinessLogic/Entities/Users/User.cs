@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic.Application;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,10 +18,14 @@ namespace BusinessLogic.Entities.Users
 {
     public interface IUser
     {
+        public OrderHandleSystem orderHandleSystem { get; }
         public string Login { get; set; }
+
         public string Password { get; set; }
+
         public List<Guid>? Bucket { get; }
-        public Order? CurrentOrder { get; }
+
+        public string FullName{ get; set; }
 
 
         public Roles Role { get; }
@@ -34,7 +39,7 @@ namespace BusinessLogic.Entities.Users
             Bucket.Remove(id);
         }
 
-        public void CreateOrder(string buyerFullName);
-        public void CancelOrder(Order order);
+        public Order CreateOrder(string buyerFullName);
+        public bool CancelOrder(Guid id);
     }
 }

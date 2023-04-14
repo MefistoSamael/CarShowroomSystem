@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,15 +12,18 @@ namespace BusinessLogic.Application
     {
         public CustomerRequestHandler? customerRequestHandler { get; internal set; }
 
+        public OrderHandleSystem? orderHandleSystem { get; internal set; }
+
         public IDBRequestSystem? DB { get; internal set; }
 
         public UserControlSystem()
         {
             customerRequestHandler = null;
+            orderHandleSystem = null;
             DB = null;
         }
 
-        public bool CreateUser(string login, string password, Roles role)
+        public bool CreateUser(string login, string password, Roles role, string fullName)
         {
             ConnectionCheck();
 
@@ -28,15 +32,15 @@ namespace BusinessLogic.Application
             switch (role)
             {
                 case Roles.customer:
-                    user = new Customer(login, password, new List<Entities.Order>(), new List<Guid>());
+                    user = new Customer(login, password, new List<Entities.Order>(), new List<Guid>(), fullName, orderHandleSystem);
                     break;
 
                 case Roles.seller:
-                    user = new Seller(login, password, new List<Entities.Order>(), new List<Guid>());
+                    user = new Seller(login, password, new List<Entities.Order>(), new List<Guid>(), fullName, orderHandleSystem);
                     break;
 
                 case Roles.admin:
-                    user = new Admin(login, password, new List<Entities.Order>(), new List<Guid>());
+                    user = new Admin(login, password, new List<Entities.Order>(), new List<Guid>(), fullName, orderHandleSystem, this);
                     break;
 
                 default:
@@ -44,7 +48,7 @@ namespace BusinessLogic.Application
                     //break;
             }
 
-            return DB.AddUser(user);
+            return DB!.AddUser(user);
         }
 
         // удаляем пользователя
@@ -72,14 +76,14 @@ namespace BusinessLogic.Application
         }
 
         // устанавливает поле currentUser в CustomerRequestHandler
-        public bool LogIn(string login) 
+        public bool LogIn(string login, string password) 
         {
             ConnectionCheck();
 
             // получаем пользователя
             IUser? user = DB!.GetCertainUser(login);
             // если такого пользователя не существует - возвращаем false
-            if (user == null) return false;
+            if (user == null || user.Password != password) return false;
 
             //устанавливаем пользователя
             customerRequestHandler!.CurrentUser = user;
@@ -94,12 +98,12 @@ namespace BusinessLogic.Application
             customerRequestHandler!.CurrentUser = null;
         }
 
-        public bool SwitchUser(string login)
+        public bool SwitchUser(string login, string password)
         {
             ConnectionCheck();
 
             if (customerRequestHandler!.CurrentUser != null) LogOut();
-            return LogIn(login);
+            return LogIn(login, password);
         }
 
         //проверка подключения БД и CustomerRequestHandler
@@ -107,7 +111,8 @@ namespace BusinessLogic.Application
         private void ConnectionCheck()
         {
             if (DB == null) throw new Exception("У тебя база данных null, дурашка");
-            if(customerRequestHandler == null) throw new Exception("У тебя customerRequestHandler null, дурашка");
+            if (customerRequestHandler == null) throw new Exception("У тебя customerRequestHandler null, дурашка");
+            if (orderHandleSystem == null) throw new Exception("У тебя orderHandleSystem null, дурашка");
         }
 
     }
