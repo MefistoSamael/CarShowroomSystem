@@ -23,7 +23,7 @@ namespace BusinessLogic.Application
             DB = null;
         }
 
-        public bool CreateUser(string login, string password, Roles role, string fullName)
+        public IUser? CreateUser(string login, string password, Roles role, string fullName)
         {
             ConnectionCheck();
 
@@ -48,7 +48,10 @@ namespace BusinessLogic.Application
                     //break;
             }
 
-            return DB!.AddUser(user);
+            if (!DB!.AddUser(user))
+                return null;
+
+            return user;
         }
 
         // удаляем пользователя
@@ -60,19 +63,22 @@ namespace BusinessLogic.Application
         }
 
         // изменяем информацию о пользователе
-        public bool ChangeUserInfo(string login, string newLogin, string password)
+        public IUser? ChangeUserInfo(string login, string newLogin, string password, string fullName)
         {
             ConnectionCheck();
 
             IUser? user = DB!.GetCertainUser(login);
             // если пользователя не существует возвращаем false
-            if (user == null) return false;
+            if (user == null) return null;
 
             //тернарное выражение, проверяющее изменение соответствующего поля
             user.Login = newLogin == null ? user.Login : newLogin;
             user.Password = password == null ? user.Password : password;
+            user.FullName = fullName == null ? user.FullName : fullName;
 
-            return DB.ChangeUserInfo(login, user);
+            DB.ChangeUserInfo(login, user);
+
+            return user;
         }
 
         // устанавливает поле currentUser в CustomerRequestHandler

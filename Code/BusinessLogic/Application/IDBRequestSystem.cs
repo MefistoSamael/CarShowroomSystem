@@ -42,9 +42,48 @@ namespace BusinessLogic.Application
             return false;
         }
 
+        public bool ChangeOrder(Guid id, Order order)
+        {
+            var item = GetOrder(id);
+            if (item == null)
+                return false;
+
+            DeleteOrder(id);
+            AddOrder(order);
+            return true;
+        }
+
+        public bool DeleteOrder(Guid id)
+        {
+            var item = orders.Where(t => t.Id == id).FirstOrDefault();
+            if (item != null)
+            {
+                return orders.Remove(item);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Order? GetOrder(Guid id)
+        {
+            return orders.Where(t => t.Id == id).FirstOrDefault();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return orders;
+        }
+
         public void AddProduct(Product product)
         {
             products.Add(product);
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            return products;
         }
 
         public bool AddUser(IUser user)
@@ -55,17 +94,6 @@ namespace BusinessLogic.Application
                 return true;
             }
             return false;
-        }
-
-        public bool ChangeOrder(Guid id, Order order)
-        {
-            var item = GetOrder(id);
-            if (item == null)
-                return false;
-
-            DeleteOrder(id);
-            AddOrder(order);
-            return true;
         }
 
         public bool ChangeUserInfo(string login, IUser user)
@@ -97,38 +125,11 @@ namespace BusinessLogic.Application
             return users.Where(t => t.Login== userName).FirstOrDefault();
         }
 
-        public Order? GetOrder(Guid id)
-        {
-            return orders.Where(t => t.Id == id).FirstOrDefault();
-        }
-
-        public bool DeleteOrder(Guid id)
-        {
-            var item = orders.Where(t =>t.Id == id).FirstOrDefault();
-            if (item != null) 
-            {
-                return orders.Remove(item);
-            }
-            else
-            {
-                return false; 
-            }
-        }
-
-        public List<Product> GetAllProducts()
-        {
-            return products;
-        }
-
         public List<IUser> GetAllUsers()
         {
             return users;
         }
 
-        public List<Order> GetAllOrders()
-        {
-            return orders;
-        }
     }
 
 }

@@ -10,11 +10,13 @@ namespace BusinessLogic.Application
     internal class ProductCreator
     {
         public IDBRequestSystem db { get; set; }
-        public void CreateProduct(Guid id, string name, string Manufacturer, bool InStock, decimal Price)
+        public Product CreateProduct(Guid id, string name, string Manufacturer, bool InStock, decimal Price)
         {
             Product product = new Product(id, name, Price, Manufacturer, InStock);
 
             db.AddProduct(product);
+
+            return product;
         }
 
         public void Demonstration()

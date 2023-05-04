@@ -1,15 +1,21 @@
-﻿using BusinessLogic.Entities.Users;
+﻿using BusinessLogic.Entities;
+using BusinessLogic.Entities.Products;
+using BusinessLogic.Entities.Users;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace BusinessLogic.Controller
 {
-    public class Controller
+    public class Controller : IController
     {
-        Model model;
+        Model.Model model;
+
+        // этого здесь быть не должно
+        // не удаляю, на случай если срочно нужно будет показать хоть что то
         public void InputInvite()
         {
             //Authorization part
@@ -35,6 +41,7 @@ namespace BusinessLogic
                     string fullName = Console.ReadLine();
 
                     model.Registrate(login, password, role, fullName);
+                    Console.WriteLine($"пользователь {login} добавлен успешно");
                 }
                 else if (command == "2")
                 {
@@ -43,8 +50,11 @@ namespace BusinessLogic
                     Console.WriteLine("введите пароль");
                     string password = Console.ReadLine();
 
-                    if (model.LogIn(login, password)) 
+                    if (model.LogIn(login, password) != null)
+                    {
+                        Console.WriteLine("вход выполнен успешно");
                         break;
+                    }
                     else
                     {
                         Console.WriteLine("Такого пользователя не существует");
@@ -52,7 +62,7 @@ namespace BusinessLogic
                     }
                 }
             }
-            
+
             //command input part
             while (true)
             {
@@ -120,7 +130,7 @@ namespace BusinessLogic
                             string fullName = Console.ReadLine();
 
                             model.Registrate(login, password, role, fullName);
-                        }    
+                        }
                         break;
                     case "7":
                         if (model.currentUser is Admin)
@@ -138,14 +148,108 @@ namespace BusinessLogic
                             Console.WriteLine("Недостаточно прав");
                         }
                         break;
-
                 }
             }
         }
-    
-        public Controller(Model model) 
+
+        public bool SignUp(string Login, string password, Roles role, string fullName)
         {
-            this.model = model;
+            return model.Registrate(Login, password, role, fullName);
+        }
+
+        public IUser? SignIn(string login, string password)
+        {
+            return model.LogIn(login, password);
+        }
+
+        public Product CreateProduct(string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product ChangeProductInfo(Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteProduct(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order CreateOrder(string byerFullName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order CancelOrder(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order GetOrderById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> GetAllUserOrders(string logIn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUser CreateUser(string logIn, string password, Roles role, string fullName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUser ChangeUserInfo(string logIn, string newLogIn, string password, Roles role, string fullName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteUser(string logIn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<IUser> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUser GetCertainUser(string logIn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddProductInBucket(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteProductInBucket(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogOut()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUser? SwitchUser(string Login, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }

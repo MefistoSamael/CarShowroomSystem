@@ -19,6 +19,7 @@ namespace BusinessLogic.Entities.Users
     public interface IUser
     {
         public OrderHandleSystem orderHandleSystem { get; }
+
         public string Login { get; set; }
 
         public string Password { get; set; }

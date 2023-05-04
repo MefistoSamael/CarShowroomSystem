@@ -16,25 +16,30 @@ namespace BusinessLogic.Application
             DB = null;
         }
 
-        public Order CreateOrder(string creatorLogin, string byerFullName, List<Guid> bucket)
+        public Order CreateOrder(string creatorLogin, string byerFullName, List<Guid>? bucket)
         {
             ConnectionCheck();
+
+            // если забыли где то инициализировать корзину
+            if (bucket == null)
+                throw new Exception("bucket is null");
 
             Order order = new Order(creatorLogin, byerFullName, bucket);
             DB!.AddOrder(order);
             return order;
         }
 
-        public bool ReturnOrder(Guid id)
+        public Order? ReturnOrder(Guid id)
         {
             ConnectionCheck();
 
             Order? order = DB!.GetOrder(id);
 
-            if (order == null) return false;
+            if (order == null) return null;
 
             order.CancelOrder();
-            return DB.ChangeOrder(id, order);
+            DB.ChangeOrder(id, order);
+            return order;
         }
 
         //проверка подключения БД
