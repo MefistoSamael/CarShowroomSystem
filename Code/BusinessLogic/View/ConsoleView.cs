@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Entities.Products;
+﻿using BusinessLogic.Entities;
+using BusinessLogic.Entities.Products;
 using BusinessLogic.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -237,6 +238,7 @@ namespace BusinessLogic.View
                         break;
                     case (int)CustomerSellerCommands.LogOut:
                         LogOut();
+                        Main();
                         break;
                     case (int)CustomerSellerCommands.SwitchUser:
                         SwitchUser();
@@ -298,17 +300,37 @@ namespace BusinessLogic.View
 
         private void SwitchUser()
         {
-            throw new NotImplementedException();
+            if (User == null)
+                throw new Exception(" user is null");
+
+            
         }
 
         private void LogOut()
         {
-            throw new NotImplementedException();
+            if (User == null)
+                throw new Exception(" user is null");
+
+            controller.LogOut();
         }
 
         private void ShowMyCertainOrder()
         {
-            throw new NotImplementedException();
+            if (User == null)
+                throw new Exception("Null user");
+
+            Console.WriteLine("Enter order id");
+            var id = Console.ReadLine();
+            if (id == null)
+            {
+                Console.WriteLine("id null. try again");
+                return;
+            }
+
+            if (controller.GetOrderById(Guid.Parse(id)) == null)
+            { 
+                Console.WriteLine("Wrong id or that's not your order"); 
+            }
         }
 
         private void ShowMyBucket()
@@ -334,22 +356,103 @@ namespace BusinessLogic.View
 
         private void ShwoMyOrders()
         {
-            throw new NotImplementedException();
+            if (User == null) throw new Exception("user is null");
+
+            var orders = controller.GetAllUserOrders(User.Login);
+
+            if(orders == null)
+                Console.WriteLine("there is no orders for that user");
+            else
+            {
+                foreach (var order in orders)
+                    WriteOrder(order);
+            }
+        }
+
+        private void WriteOrder(Order order)
+        {
+            Console.WriteLine($"" +
+                $"order id - {order.Id}\n" +
+                $"creator user name - {order.CreatorUserName}\n" +
+                $"buyer full name - {order.BuyerFullName}\n" +
+                $"price - {order.Price}\n" +
+                $"order state - {order.State}\n" +
+                $"creation time - {order.CreationTime}\n");
+            if (order.State == Order.OrderState.Returned)
+                Console.WriteLine($"cancellation time - {order.CancellationTime}");
+
+            Console.WriteLine("Products in bucket");
+            foreach (var item in order.Bucket)
+            {
+                WriteSmallProductInfo(controller.GetProductById(item.Key)!);
+            }
+
+            Console.WriteLine("\n\n\n");
+
         }
 
         private void CancelOrder()
         {
-            throw new NotImplementedException();
+            if (User == null)
+                throw new Exception("User is null");
+
+            Console.WriteLine("Enter order id");
+            var id = Console.ReadLine();
+            if (id == null)
+            {
+                Console.WriteLine("id null. try again");
+                return;
+            }
+
+            if (controller.CancelOrder(Guid.Parse(id)) == null)
+            {
+                Console.WriteLine("There is no order with such id");
+                return;
+            }
         }
 
         private void CreateOrder()
         {
-            throw new NotImplementedException();
+            if (User == null)
+                throw new Exception("User is null");
+
+            string? byerFullName = User.FullName;
+
+            // если оформляет заказ не покупатель, то необходимо ввести имя того, кто
+            // покупает "в реальности"(из предметной области)
+            if (User is Admin || User is Seller)
+            {
+                Console.WriteLine("Enter byer full name");
+                byerFullName = Console.ReadLine();
+                if (byerFullName == null)
+                {
+                    Console.WriteLine("byer full name is null. try again");
+                    return;
+                }
+            }
+
+
+            if (controller.CreateOrder(byerFullName) == null)
+            {
+                Console.WriteLine("bucket is empty");
+                return;
+            }
         }
 
         private void DeleteProductFromBucket()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter product id");
+            var id = Console.ReadLine();
+            if (id == null)
+            {
+                Console.WriteLine("id null. try again");
+                return;
+            }
+
+            if (controller.DeleteProductInBucket(Guid.Parse(id)))
+                Console.WriteLine("Product deleted from bucket");
+            else
+                Console.WriteLine("There is no element with such id");
         }
 
         private void AddProductInBucket()

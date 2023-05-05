@@ -24,7 +24,7 @@ namespace BusinessLogic.Entities.Users
 
         public string Password { get; set; }
 
-        public Dictionary<Guid, int> Bucket { get; }
+        public Dictionary<Guid, int> Bucket { get; set; }
 
         public string FullName{ get; set; }
 

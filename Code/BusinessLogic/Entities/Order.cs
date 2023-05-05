@@ -14,7 +14,7 @@ public class Order
 
     public decimal Price { get; private set; }
 
-    public Order(string creatorUserName, string buyerFullName, Dictionary<Guid, int> bucket)
+    public Order(string creatorUserName, string buyerFullName, Dictionary<Guid, int> bucket, decimal price)
     {
         CreatorUserName = creatorUserName;
         BuyerFullName = buyerFullName;

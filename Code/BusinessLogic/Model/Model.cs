@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BusinessLogic.Model
 {
@@ -126,11 +127,19 @@ namespace BusinessLogic.Model
             return dBRequestSystem.GetProductByGuid(id);
         }
 
-        public Order CreateOrder(string byerFullName)
+        public Order? CreateOrder(string byerFullName)
         {
             currentUserCheck();
 
-            return orderHandleSystem.CreateOrder(currentUser!.Login, byerFullName, currentUser.Bucket);
+            if (currentUser!.Bucket.Count == 0)
+                return null;
+
+            var order = orderHandleSystem.CreateOrder(currentUser!.Login, byerFullName, currentUser.Bucket);
+
+            // корзина должна чиститься после совершения заказа
+            currentUser.Bucket = new Dictionary<Guid, int>();
+
+            return order;
         }
 
         public Order? CancelOrder(Guid id)
@@ -149,7 +158,7 @@ namespace BusinessLogic.Model
             if (correctUserCheck(order.CreatorUserName))
                 return orderHandleSystem.ReturnOrder(id);
             else
-                throw new Exception("Order cancellation from wrong user (not admin or not creator of order");
+                return null;
 
             
         }
@@ -168,7 +177,7 @@ namespace BusinessLogic.Model
             if (correctUserCheck(order.CreatorUserName))
                 return dBRequestSystem.GetOrder(id);
             else
-                throw new Exception("Order acces from wrong user (not admin or not creator of order)");
+                return null;
 
         }
 

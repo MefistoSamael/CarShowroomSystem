@@ -26,9 +26,10 @@ namespace BusinessLogic.Application
             if (bucket == null)
                 throw new Exception("bucket is null");
 
-            Order order = new Order(creatorLogin, byerFullName, bucket);
+            Order order = new Order(creatorLogin, byerFullName, bucket, CalculateBucketPrice(bucket));
             DB!.AddOrder(order);
             return order;
+
         }
 
         public Order? ReturnOrder(Guid id)

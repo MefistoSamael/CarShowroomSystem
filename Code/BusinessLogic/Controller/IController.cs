@@ -33,7 +33,6 @@ namespace BusinessLogic.Controller
 
 
 
-        // если заказ создает покупатель - передавать Null
         public Order? CreateOrder(string byerFullName);
 
         public Order? CancelOrder(Guid id);
