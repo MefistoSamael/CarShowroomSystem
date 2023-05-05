@@ -24,16 +24,17 @@ namespace BusinessLogic.Entities.Users
 
         public string Password { get; set; }
 
-        public List<Guid>? Bucket { get; }
+        public Dictionary<Guid, int> Bucket { get; }
 
         public string FullName{ get; set; }
 
 
         public Roles Role { get; }
 
-        public void AddProductInBucket(Guid id)
+        public void AddProductInBucket(Guid id, int count = 1)
         {
-            Bucket.Add(id);
+            if (Bucket.ContainsKey(id)) Bucket[id] += count;
+            else Bucket[id] = count;
         }
         public void DeleteProductInBucket(Guid id)
         {
@@ -41,6 +42,6 @@ namespace BusinessLogic.Entities.Users
         }
 
         public Order CreateOrder(string buyerFullName);
-        public bool CancelOrder(Guid id);
+        public Order? CancelOrder(Guid id);
     }
 }

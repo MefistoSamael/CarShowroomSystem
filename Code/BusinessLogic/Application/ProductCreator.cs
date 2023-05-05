@@ -21,9 +21,9 @@ namespace BusinessLogic.Application
 
         public void Demonstration()
         {
-            CreateProduct(new Guid(), "Product 1", "IP ISHO", true, 25);
-            CreateProduct(new Guid(), "Product 2", "ROGA I KOPITA", false, 31);
-            CreateProduct(new Guid(), "Product 3", "Antonio Pripizduchi", true, 5);
+            CreateProduct(Guid.NewGuid(), "Product 1", "IP ISHO", true, 25);
+            CreateProduct(Guid.NewGuid(), "Product 2", "ROGA I KOPITA", false, 31);
+            CreateProduct(Guid.NewGuid(), "Product 3", "Antonio Pripizduchi", true, 5);
         }
     }
 }

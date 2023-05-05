@@ -21,7 +21,7 @@ namespace BusinessLogic.Application
             return CurrentUser!.CreateOrder(byerFullName);
         }
 
-        public bool CancelOrder(Guid id)
+        public Order? CancelOrder(Guid id)
         {
             UserCheck();
 
@@ -29,7 +29,7 @@ namespace BusinessLogic.Application
         }
 
         // создание пользователя админом
-        public bool CreateUser(string login, string password, Roles role, string fullName)
+        public IUser? CreateUser(string login, string password, Roles role, string fullName)
         {
             UserCheck();
             UserControlSystemCheck();
@@ -37,7 +37,7 @@ namespace BusinessLogic.Application
             if (CurrentUser is Admin)
                 return userControlSystem!.CreateUser(login, password, role, fullName);
             else
-                return false;
+                return null;
         }
 
         // удаление пользователя админом

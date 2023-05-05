@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.Entities;
+using BusinessLogic.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +18,7 @@ namespace BusinessLogic.Application
             DB = null;
         }
 
-        public Order CreateOrder(string creatorLogin, string byerFullName, List<Guid>? bucket)
+        public Order CreateOrder(string creatorLogin, string byerFullName, Dictionary<Guid, int> bucket)
         {
             ConnectionCheck();
 
@@ -40,6 +42,19 @@ namespace BusinessLogic.Application
             order.CancelOrder();
             DB.ChangeOrder(id, order);
             return order;
+        }
+
+        public decimal CalculateBucketPrice(Dictionary<Guid, int> bucket)
+        {
+            ConnectionCheck();
+
+            decimal price = 0;
+            foreach(Guid key in bucket.Keys) 
+            {
+                price += DB!.GetProductByGuid(key).Price * bucket[key];
+            }
+
+            return price;
         }
 
         //проверка подключения БД

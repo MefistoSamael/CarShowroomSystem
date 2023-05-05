@@ -47,7 +47,7 @@ namespace BusinessLogic.Model
 
         public IUser? CreateUser(string logIn, string password, Roles role, string fullName);
 
-        public IUser? ChangeUserInfo(string logIn, string newLogIn, string password, Roles role, string fullName);
+        public IUser? ChangeUserInfo(string logIn, string newLogIn, string password, string fullName);
 
         public bool DeleteUser(string logIn);
 
@@ -57,8 +57,8 @@ namespace BusinessLogic.Model
 
 
 
-        public void AddProductInBucket(Guid id);
+        public bool AddProductInBucket(Guid id, int count);
 
-        public void DeleteProductInBucket(Guid id);
+        public bool DeleteProductInBucket(Guid id);
     }
 }

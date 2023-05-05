@@ -16,13 +16,13 @@ namespace BusinessLogic.Entities.Users
 
         public string Password { get; set; }
 
-        public List<Guid>? Bucket { get; private set; }
+        public Dictionary<Guid, int> Bucket { get; private set; }
 
         public Roles Role { get; private set; }
 
         public string FullName { get; set; }
 
-        public Admin(string login, string password, List<Order> userOrders, List<Guid> bucket, string fullName, OrderHandleSystem orderHandleSystem, UserControlSystem userControlSystem)
+        public Admin(string login, string password, List<Order> userOrders, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem, UserControlSystem userControlSystem)
         {
             Login = login;
             Password = password;
@@ -34,7 +34,7 @@ namespace BusinessLogic.Entities.Users
         }
 
 
-        public bool CancelOrder(Guid id)
+        public Order? CancelOrder(Guid id)
         {
             return orderHandleSystem.ReturnOrder(id);
         }
@@ -55,7 +55,7 @@ namespace BusinessLogic.Entities.Users
 
         public bool CreateUser(string login, string password, Roles role, string FullName)
         {
-            if (!userControlSystem.CreateUser(login, password, role, FullName))
+            if (userControlSystem.CreateUser(login, password, role, FullName) != null)
             {
                 return false;
             }

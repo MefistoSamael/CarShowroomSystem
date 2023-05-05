@@ -4,7 +4,8 @@ using BusinessLogic.Controller;
 using BusinessLogic.Model;
 using BusinessLogic.View;
 
-Model model = new Model();
+
+Model model = new Model();  
 
 Controller controller = new Controller(model);
 

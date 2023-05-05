@@ -13,11 +13,17 @@ namespace BusinessLogic.Application
         bool ChangeOrder(Guid id, Order order);
         bool ChangeUserInfo(string login, IUser user);
         bool DeleteUser(string userName);
+
+        bool ContainsProductById(Guid id);
+        bool ContainsUserByLogIn(string login);
+
+
         List<Order> GetAllOrders();
         List<Product> GetAllProducts();
         List<IUser> GetAllUsers();
         IUser? GetCertainUser(string userName);
         Order? GetOrder(Guid id);
+        Product? GetProductByGuid(Guid key);
     }
 
     public class TopDB : IDBRequestSystem
@@ -130,6 +136,20 @@ namespace BusinessLogic.Application
             return users;
         }
 
+        public Product? GetProductByGuid(Guid id)
+        {
+            return products.Where(t => t.Id == id).FirstOrDefault();
+        }
+
+        public bool ContainsProductById(Guid id)
+        {
+            return GetProductByGuid(id) != null;
+        }
+
+        public bool ContainsUserByLogIn(string login)
+        {
+            return GetCertainUser(login) != null;
+        }
     }
 
 }

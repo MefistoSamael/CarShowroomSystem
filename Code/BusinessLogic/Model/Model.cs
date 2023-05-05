@@ -82,14 +82,14 @@ namespace BusinessLogic.Model
 
         public void Demonstration()
         {
-            SignUp("Ivan228336", "1234", Roles.customer, "Ivan  Zalupko");
-            SignUp("AnotonioPripizduchi666", "1234", Roles.seller, "Anotonio Pripizduchi");
-            SignUp("SexMachine1337", "1234", Roles.admin, "Daniil Gryaznii");
+            SignUp("c", "1", Roles.customer, "Ivan  Lupko");
+            SignUp("s", "1", Roles.seller, "Anotonio Pruchi");
+            SignUp("a", "1", Roles.admin, "Daniil Gryaznii");
         }
 
         public bool SignUp(string logIn, string password, Roles role, string fullName)
         {
-            return userControlSystem.CreateUser(logIn, password, role, fullName) == null ? true : false;
+            return userControlSystem.CreateUser(logIn, password, role, fullName) != null ? true : false;
         }
 
         public IUser? SignIn(string logIn, string password)
@@ -98,9 +98,17 @@ namespace BusinessLogic.Model
             return currentUser = customerRequestHandler.CurrentUser;
         }
 
+        // создает товар и заносит его в базу данных
+
         public Product CreateProduct(string name, decimal price, string manufacturer, bool inStock)
         {
-            return productCreator.CreateProduct(new Guid(), name, manufacturer, inStock, price);
+            // создание пользователя доступно в двух случаях:
+            // 1) админ создает пользователя
+            // 2) пользователь создается заранее для демонстрации работы программы
+            if (currentUser == null || currentUser is Admin)
+                return productCreator.CreateProduct(new Guid(), name, manufacturer, inStock, price);
+            else
+                throw new Exception("Invalid product creation");
         }
 
         public Product ChangeProductInfo(Guid id, string name, decimal price, string manufacturer, bool inStock)
@@ -115,7 +123,7 @@ namespace BusinessLogic.Model
 
         public Product GetProductById(Guid id)
         {
-            throw new Exception("will be added sooner");
+            return dBRequestSystem.GetProductByGuid(id);
         }
 
         public Order CreateOrder(string byerFullName)
@@ -211,18 +219,28 @@ namespace BusinessLogic.Model
                 throw new Exception("Invalid user get attempt");
         }
 
-        public void AddProductInBucket(Guid id)
+        public bool AddProductInBucket(Guid id, int count)
         {
             currentUserCheck();
 
-            currentUser!.AddProductInBucket(id); 
+            if (dBRequestSystem.ContainsProductById(id))
+            {
+                currentUser!.AddProductInBucket(id, count);
+                return true;
+            }
+            else return false;
         }
 
-        public void DeleteProductInBucket(Guid id)
+        public bool DeleteProductInBucket(Guid id)
         {
             currentUserCheck();
-
-            currentUser!.DeleteProductInBucket(id);
+            
+            if(currentUser!.Bucket.ContainsKey(id))
+            {
+                currentUser!.DeleteProductInBucket(id);
+                return true;
+            }
+            else return false;
         }
 
         private void currentUserCheck()

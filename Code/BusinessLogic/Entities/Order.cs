@@ -9,10 +9,12 @@ public class Order
     public string BuyerFullName { get; }
     public DateTime CreationTime { get; } = DateTime.UtcNow;
     public DateTime? CancellationTime { get; private set; }
-    public List<Guid> Bucket { get; } = new List<Guid>();
+    public Dictionary<Guid, int> Bucket { get; } = new Dictionary<Guid, int>();
     public OrderState State { get; private set; } = OrderState.Completed;
 
-    public Order(string creatorUserName, string buyerFullName, List<Guid> bucket)
+    public decimal Price { get; private set; }
+
+    public Order(string creatorUserName, string buyerFullName, Dictionary<Guid, int> bucket)
     {
         CreatorUserName = creatorUserName;
         BuyerFullName = buyerFullName;
@@ -22,9 +24,9 @@ public class Order
     public decimal GetBucketPrice()
     {
         decimal totalPrice = 0;
-        foreach (Guid itemId in Bucket)
+        foreach (var pair in Bucket)
         {
-            // Здесь должен быть код получения цены товара из базы данных по его ID
+            
             decimal itemPrice = 100; // пример цены
             totalPrice += itemPrice;
         }
