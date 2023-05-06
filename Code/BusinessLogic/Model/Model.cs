@@ -122,6 +122,37 @@ namespace BusinessLogic.Model
             throw new Exception("will be added sooner");
         }
 
+        public Car? CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car? ChangeCarInfo(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EngineOil? CreateEngineOil(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EngineOil? ChangeEngineOilInfo(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Tires? CreateTires(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Tires? ChangeTiresInfo(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public Product GetProductById(Guid id)
         {
             return dBRequestSystem.GetProductByGuid(id);
@@ -260,5 +291,6 @@ namespace BusinessLogic.Model
 
         // проверяет явялется ли переданный пользователь корректным (для случая работы с заказом)
         private bool correctUserCheck(string creatorUserName) => currentUser is Admin || currentUser!.Login == creatorUserName;
+
     }
 }

@@ -13,17 +13,26 @@ namespace BusinessLogic.Application
         bool ChangeOrder(Guid id, Order order);
         bool ChangeUserInfo(string login, IUser user);
         bool DeleteUser(string userName);
-
+        bool DeleteProduct(Guid id);
         bool ContainsProductById(Guid id);
         bool ContainsUserByLogIn(string login);
 
 
-        List<Order> GetAllOrders();
-        List<Product> GetAllProducts();
-        List<IUser> GetAllUsers();
+        List<Order>? GetAllOrders();
+        List<Product>? GetAllProducts();
+        List<IUser>? GetAllUsers();
         IUser? GetCertainUser(string userName);
         Order? GetOrder(Guid id);
         Product? GetProductByGuid(Guid key);
+        void AddCar(Car car);
+        Car? GetCar(Guid id);
+        bool ChangeCarInfo(Guid id, Car car);
+        void AddEngineOil(EngineOil engineOil);
+        EngineOil? GetEngineOil(Guid id);
+        bool ChangeEngineOilInfo(Guid id, EngineOil engineOil);
+        void AddTires(Tires tires);
+        Tires? GetTires(Guid id);
+        public bool ChangeTiresInfo(Guid id, Tires tires);
     }
 
     public class TopDB : IDBRequestSystem
@@ -31,12 +40,18 @@ namespace BusinessLogic.Application
         List<Order> orders;
         List<Product> products;
         List<IUser> users;
+        List<Car> cars;
+        List<EngineOil> engineOils;
+        List<Tires> tireses;
 
         public TopDB()
         {
             orders = new List<Order>();
             products = new List<Product>();
             users = new List<IUser>();
+            cars = new List<Car>();
+            tireses= new List<Tires>();
+            engineOils= new List<EngineOil>();
         }
         public bool AddOrder(Order order)
         {
@@ -128,7 +143,7 @@ namespace BusinessLogic.Application
 
         public IUser? GetCertainUser(string userName)
         {
-            return users.Where(t => t.Login== userName).FirstOrDefault();
+            return users.FirstOrDefault(t => t.Login == userName);
         }
 
         public List<IUser> GetAllUsers()
@@ -138,7 +153,7 @@ namespace BusinessLogic.Application
 
         public Product? GetProductByGuid(Guid id)
         {
-            return products.Where(t => t.Id == id).FirstOrDefault();
+            return products.FirstOrDefault(t => t.Id == id);
         }
 
         public bool ContainsProductById(Guid id)
@@ -149,6 +164,96 @@ namespace BusinessLogic.Application
         public bool ContainsUserByLogIn(string login)
         {
             return GetCertainUser(login) != null;
+        }
+
+        public void AddCar(Car car)
+        {
+            cars.Add(car);
+        }
+
+        public Car? GetCar(Guid id)
+        {
+            return  cars.FirstOrDefault(t => t.Id == id);
+        }
+
+        public bool ChangeCarInfo(Guid id, Car car)
+        {
+            Car? carr = GetCar(id);
+
+            if (carr is null)
+                return false;
+
+            DeleteProduct(id);
+            AddCar(car);
+
+            return true;
+        }
+
+        public void AddEngineOil(EngineOil engineOil)
+        {
+            engineOils.Add(engineOil);
+        }
+
+        public EngineOil? GetEngineOil(Guid id)
+        {
+            return engineOils.FirstOrDefault(t => t.Id == id);
+        }
+
+        public bool ChangeEngineOilInfo(Guid id, EngineOil engineOil)
+        {
+            EngineOil? engineOill = GetEngineOil(id);
+
+            if (engineOill is null) 
+                return false;
+
+            DeleteProduct(id);
+            AddEngineOil(engineOill);
+
+            return true;
+        }
+
+        public void AddTires(Tires tires)
+        {
+            tireses.Add(tires);
+        }
+
+        public Tires? GetTires(Guid id)
+        {
+            return tireses.FirstOrDefault(t => t.Id == id);
+        }
+
+        public bool ChangeTiresInfo(Guid id, Tires tires)
+        {
+            Tires? existingTires = GetTires(id);
+
+            if (existingTires is null)
+                return false;
+
+            DeleteProduct(id);
+            AddTires(tires);
+
+            return true;
+        }
+
+        public bool DeleteProduct(Guid id)
+        {
+            if (cars.FirstOrDefault(t => t.Id == id) is not null)
+            {
+                cars.Remove(GetCar(id)!);
+                return true;
+            }
+            else if (engineOils.FirstOrDefault(t => t.Id == id) is not null)
+            {
+                engineOils.Remove(GetEngineOil(id)!);
+                return true;
+            }
+            else if (tireses.FirstOrDefault(t => t.Id == id) is not null)
+            {
+                tireses.Remove(GetTires(id)!);
+                return true;
+            }
+
+            return false;
         }
     }
 

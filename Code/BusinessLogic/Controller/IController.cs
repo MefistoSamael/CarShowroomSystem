@@ -25,6 +25,19 @@ namespace BusinessLogic.Controller
         //если какое то поле не изменяется - передавать Null
         public Product? ChangeProductInfo(Guid id, string name, decimal price, string manufacturer, bool inStock);
 
+        public Car? CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock);
+
+        public Car? ChangeCarInfo(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, Guid id, string name, decimal price, string manufacturer, bool inStock);
+
+        public EngineOil? CreateEngineOil(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock);
+
+        public EngineOil? ChangeEngineOilInfo(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock);
+
+        public Tires? CreateTires(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock);
+
+        public Tires? ChangeTiresInfo(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock);
+
+
         public bool DeleteProduct(Guid id);
 
         public List<Product>? GetAllProducts();

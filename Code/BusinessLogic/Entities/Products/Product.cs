@@ -19,14 +19,14 @@ namespace BusinessLogic.Entities.Products
 
         }
 
-        public Product(Guid id, string name, decimal price, string manufacturer, bool inStock)
-        {
-            Id = id;
-            Name = name;
-            Price = price;
-            Manufacturer = manufacturer;
-            InStock = inStock;
-        }
+        //public Product(Guid id, string name, decimal price, string manufacturer, bool inStock)
+        //{
+        //    Id = id;
+        //    Name = name;
+        //    Price = price;
+        //    Manufacturer = manufacturer;
+        //    InStock = inStock;
+        //}
 
         public Guid Id { get; set; }
 
