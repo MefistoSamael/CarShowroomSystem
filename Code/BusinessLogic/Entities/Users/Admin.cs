@@ -22,7 +22,7 @@ namespace BusinessLogic.Entities.Users
 
         public string FullName { get; set; }
 
-        public Admin(string login, string password, List<Order> userOrders, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem, UserControlSystem userControlSystem)
+        public Admin(string login, string password, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem, UserControlSystem userControlSystem)
         {
             Login = login;
             Password = password;

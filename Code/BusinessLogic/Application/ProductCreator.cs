@@ -47,6 +47,7 @@ namespace BusinessLogic.Application
                 Manufacturer = manufacturer,
                 InStock = inStock
             };
+
             db.AddCar(car);
 
             return car;
@@ -225,7 +226,7 @@ namespace BusinessLogic.Application
             if (inStock.HasValue)
                 tires.InStock = inStock.Value;
 
-            db.ChangeTiresInfo(tires);
+            db.ChangeTiresInfo(id, tires);
 
             return tires;
         }

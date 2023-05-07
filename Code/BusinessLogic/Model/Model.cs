@@ -14,6 +14,7 @@ namespace BusinessLogic.Model
 {
     public class Model : IModel
     {
+    
         private UserControlSystem userControlSystem;
         private CustomerRequestHandler customerRequestHandler;
         private OrderHandleSystem orderHandleSystem;
@@ -66,31 +67,31 @@ namespace BusinessLogic.Model
             return customerRequestHandler.DeleteUser(login);
         }
 
-        public List<Product> GetAllProducts()
+        public List<Product>? GetAllProducts()
         {
             return dBRequestSystem.GetAllProducts();
         }
 
-        public List<IUser> GetAllUsers()
+        public List<IUser>? GetAllUsers()
         {
             return dBRequestSystem.GetAllUsers();
         }
 
-        public List<Order> GetAllOrders()
+        public List<Order>? GetAllOrders()
         {
             return dBRequestSystem.GetAllOrders();
         }
 
         public void Demonstration()
         {
-            SignUp("c", "1", Roles.customer, "Ivan  Lupko");
-            SignUp("s", "1", Roles.seller, "Anotonio Pruchi");
-            SignUp("a", "1", Roles.admin, "Daniil Gryaznii");
+            AddUser("c", "1", Roles.customer, "Ivan  Lupko");
+            AddUser("s", "1", Roles.seller, "Anotonio Pruchi");
+            AddUser("a", "1", Roles.admin, "Daniil Gryaznii");
         }
 
-        public bool SignUp(string logIn, string password, Roles role, string fullName)
+        public IUser? AddUser(string logIn, string password, Roles role, string fullName)
         {
-            return userControlSystem.CreateUser(logIn, password, role, fullName) != null ? true : false;
+            return userControlSystem.CreateUser(logIn, password, role, fullName);
         }
 
         public IUser? SignIn(string logIn, string password)
@@ -122,38 +123,38 @@ namespace BusinessLogic.Model
             throw new Exception("will be added sooner");
         }
 
-        public Car? CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock)
+        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return productCreator.CreateCar(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, name, price, manufacturer, inStock);
         }
 
         public Car? ChangeCarInfo(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, Guid id, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return productCreator.ChangeCarInfo(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, id, name, price, manufacturer, inStock);
         }
 
-        public EngineOil? CreateEngineOil(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return CreateEngineOil(composition, viscosity, engineType, name, price, manufacturer, inStock);
         }
 
         public EngineOil? ChangeEngineOilInfo(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return productCreator.ChangeEngineOilInfo(composition, viscosity, engineType, id, name, price, manufacturer, inStock);
         }
 
-        public Tires? CreateTires(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public Tires CreateTires(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name, price, manufacturer, inStock);
         }
 
-        public Tires? ChangeTiresInfo(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public Tires? ChangeTiresInfo(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
         {
-            throw new NotImplementedException();
+            return productCreator.ChangeTiresInfo(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, id, name, price, manufacturer, inStock);
         }
 
 
-        public Product GetProductById(Guid id)
+        public Product? GetProductById(Guid id)
         {
             return dBRequestSystem.GetProductByGuid(id);
         }
@@ -291,6 +292,5 @@ namespace BusinessLogic.Model
 
         // проверяет явялется ли переданный пользователь корректным (для случая работы с заказом)
         private bool correctUserCheck(string creatorUserName) => currentUser is Admin || currentUser!.Login == creatorUserName;
-
     }
 }

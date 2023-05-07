@@ -32,15 +32,15 @@ namespace BusinessLogic.Application
             switch (role)
             {
                 case Roles.customer:
-                    user = new Customer(login, password, new List<Entities.Order>(), new Dictionary<Guid, int>(), fullName, orderHandleSystem!);
+                    user = new Customer(login, password, new Dictionary<Guid, int>(), fullName, orderHandleSystem!);
                     break;
 
                 case Roles.seller:
-                    user = new Seller(login, password, new List<Entities.Order>(), new Dictionary<Guid, int>(), fullName, orderHandleSystem!);
+                    user = new Seller(login, password, new Dictionary<Guid, int>(), fullName, orderHandleSystem!);
                     break;
 
                 case Roles.admin:
-                    user = new Admin(login, password, new List<Entities.Order>(), new Dictionary<Guid, int>(), fullName, orderHandleSystem!, this);
+                    user = new Admin(login, password, new Dictionary<Guid, int>(), fullName, orderHandleSystem!, this);
                     break;
 
                 default:

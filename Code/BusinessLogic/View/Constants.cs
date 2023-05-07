@@ -42,6 +42,15 @@ namespace BusinessLogic.View
         ShowCertainOrder,
         ShowCertainUser,
         ChangeUserInfo,
+        AddCar,
+        DeleteCar,
+        ChangeCarInfo,
+        AddEngineOil,
+        DeleteEngineOil,
+        ChangeEngineOilInfo,
+        AddTires,
+        DeleteTires,
+        ChangeTiresInfo,
 
         // это команда должна идти последней, потому что
         // список команд инициализируется до ее номера

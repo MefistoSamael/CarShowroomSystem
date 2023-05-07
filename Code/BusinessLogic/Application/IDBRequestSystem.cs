@@ -104,6 +104,13 @@ namespace BusinessLogic.Application
 
         public List<Product> GetAllProducts()
         {
+            List<Product> products = new List<Product>();
+            foreach (var car in cars)
+                products.Add(car);
+            foreach (var engineOil in engineOils)
+                products.Add(engineOil);
+            foreach (var tire in tireses) 
+                products.Add(tire);
             return products;
         }
 

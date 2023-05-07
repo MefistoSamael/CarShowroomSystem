@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -238,7 +239,6 @@ namespace BusinessLogic.View
                         break;
                     case (int)CustomerSellerCommands.LogOut:
                         LogOut();
-                        Main();
                         break;
                     case (int)CustomerSellerCommands.SwitchUser:
                         SwitchUser();
@@ -264,8 +264,85 @@ namespace BusinessLogic.View
                     case (int)AdminCommand.ChangeUserInfo:
                         ChangeUserInfo();
                         break;
+                    case (int)AdminCommand.AddCar:
+                        AddCar();
+                        break;
+                    case (int)AdminCommand.DeleteCar:
+                        DeleteCar();
+                        break;
+                    case (int)AdminCommand.ChangeCarInfo:
+                        ChangeCarInfo();
+                        break;
+                    case (int)AdminCommand.AddEngineOil:
+                        AddEngineOil();
+                        break;
+                    case (int)AdminCommand.DeleteEngineOil:
+                        DeleteEngineOil();
+                        break;
+                    case (int)AdminCommand.ChangeEngineOilInfo:
+                        ChangeEngineOilInfo();
+                        break;
+                    case (int)AdminCommand.AddTires:
+                        AddTires();
+                        break;
+                    case (int)AdminCommand.DeleteTires:
+                        DeleteTires();
+                        break;
+                    case (int)AdminCommand.ChangeTiresInfo:
+                        ChangeTiresInfo();
+                        break;
                 }
             }   
+        }
+
+        private void ChangeTiresInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteTires()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddTires()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ChangeEngineOilInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteEngineOil()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddEngineOil()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ChangeCarInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteCar()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddCar()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ChangeUserInfo()
+        {
+            throw new NotImplementedException();
         }
 
         private void ShowCertainUser()
@@ -275,27 +352,185 @@ namespace BusinessLogic.View
 
         private void ShowCertainOrder()
         {
-            throw new NotImplementedException();
+            Guid id = EnterId();
+        }
+
+        private Guid EnterId()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter id");
+
+                string? id = Console.ReadLine();
+
+                if (id is null)
+                {
+                    Console.WriteLine("id null. Try again");
+                    continue;
+                }
+
+                try
+                {
+                    Guid guid = Guid.Parse(id);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid id. try again");
+                }
+            }
         }
 
         private void ShowAllUsers()
         {
-            throw new NotImplementedException();
+            List<IUser>? users = controller.GetAllUsers();
+
+            if (users is null)
+            {
+                NoUsersHandle();
+                return;
+            }
+
+            foreach (var user in users)
+                WriteUser(user);
+        }
+
+        private void WriteUser(IUser user)
+        {
+            Console.WriteLine("User info:");
+            Console.WriteLine($"Login:\t\t{user.Login}");
+            Console.WriteLine($"Password:\t{user.Password}");
+            Console.WriteLine($"Full Name\t{user.FullName}");
+            Console.WriteLine($"Role:\t\t{user.Role}");
+
+            Console.WriteLine("Bucket:");
+            WriteBucket(user.Bucket);
+            Console.WriteLine();
+
+        }
+
+        private void NoUsersHandle()
+        {
+            Console.WriteLine("there is no users");
         }
 
         private void ShowAllOrders()
         {
-            throw new NotImplementedException();
+            List<Order>? orders = controller.GetAllOrders();
+
+            if (orders is null)
+            {
+                NoOrdesHandle();
+                return;
+            }
+            
+            foreach (var order in orders)
+                WriteOrder(order);
+
+        }
+
+        private void NoOrdesHandle()
+        {
+            Console.WriteLine("there is no orders");
         }
 
         private void DeleteUser()
         {
-            throw new NotImplementedException();
+            string logIn= EnterLogIn();
+
+            if (!controller.DeleteUser(logIn))
+                UnknownLogin(); 
+        }
+
+        private void UnknownLogin()
+        {
+            Console.WriteLine("there is no user with such login");
+        }
+
+        private string EnterLogIn()
+        {
+            Console.WriteLine("Enter login");
+            string? login = Console.ReadLine();
+            while (true)
+            {
+                if (login == null)
+                {
+                    Console.WriteLine("E\nN\nT\nE\nR\nL\nO\nG\nI\nN\n");
+                    login= Console.ReadLine();
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return login;
         }
 
         private void AddUser()
         {
-            throw new NotImplementedException();
+            string login, password, fullName, roleInput;
+            while (true)
+            {
+                Console.WriteLine("Enter login");
+                login = Console.ReadLine()!;
+
+                if (login != null)
+                    break;
+                else
+                    Console.WriteLine("Empty login");
+            }
+
+
+            while (true)
+            {
+                Console.WriteLine("Enter password");
+                password = Console.ReadLine()!;
+
+                if (password != null)
+                    break;
+                else
+                    Console.WriteLine("Empty password");
+            }
+
+            // для проверки на корректность ввода роли
+            bool validOutput = false;
+            Roles role = default;
+            while (true)
+            {
+                Console.WriteLine("Enter one of thees roles:\n1 - customer\n2 - seller");
+                roleInput = Console.ReadLine()!;
+
+                //если корректный ввод  - устанавливаем соответствующее значение и ставим в переменную выхода значение true
+                switch (roleInput)
+                {
+                    case "1":
+                        role = Roles.customer;
+                        validOutput = true;
+                        break;
+                    case "2":
+                        role = Roles.seller;
+                        validOutput = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Try again");
+                        break;
+                }
+                if (validOutput == true)
+                    break;
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter full name");
+                fullName = Console.ReadLine()!;
+
+                if (fullName != null)
+                    break;
+                else
+                    Console.WriteLine("Empty full name");
+            }
+
+            controller.AddUser(login, password, role, fullName);
         }
 
         private void SwitchUser()
@@ -303,7 +538,43 @@ namespace BusinessLogic.View
             if (User == null)
                 throw new Exception(" user is null");
 
-            
+            controller.LogOut();
+            User = null;
+
+
+            while (true)
+            {
+                // без приведения к int выведет SignIn
+                Console.WriteLine($"\n{(int)RegistrationCommands.SignIn} - {RegistrationCommands.SignIn.ToString()}\n");
+                string? input = Console.ReadLine();
+
+                // обработка пользовательского ввода
+                // если пользователь решил войти - то проверха входа
+                if (input == null)
+                    Console.WriteLine("Empty input");
+                else
+                {
+                    // проверка на команду входа
+                    // commands.SignIn.ToString().ToLower() вернет singin в качестве строки
+                    if (input.ToLower() == RegistrationCommands.SignIn.ToString().ToLower() || Convert.ToInt32(input) == ((int)RegistrationCommands.SignIn))
+                    {
+                        // вход и проверка на его успешность
+                        IUser user = SignIn();
+                        if (user != null)
+                        {
+                            User = user;
+                            Console.WriteLine($"Hello, {user.Login}\n");
+                            return;
+
+                        }
+                        else
+                            Console.WriteLine("There is no such user");
+                    }
+                    else Console.WriteLine("Wrong command. Try again");
+
+                }
+            }
+
         }
 
         private void LogOut()
@@ -312,6 +583,9 @@ namespace BusinessLogic.View
                 throw new Exception(" user is null");
 
             controller.LogOut();
+            User= null;
+
+            AuthorizationPart();
         }
 
         private void ShowMyCertainOrder()
@@ -341,17 +615,25 @@ namespace BusinessLogic.View
             Console.WriteLine("\n\n\n");
             if (User.Bucket != null)
             {
-                foreach(var pair in User.Bucket)
+                WriteBucket(User.Bucket);
+            }
+            Console.WriteLine("\n\n\n");
+        }
+
+        private void WriteBucket(Dictionary<Guid, int> bucket)
+        {
+            if (bucket.Count == 0)
+                Console.WriteLine("bucket is empty");
+            else
+                foreach (var pair in bucket)
                 {
                     var prod = controller.GetProductById(pair.Key);
                     if (prod == null)
                         throw new Exception("prod in bucket but not in bd. wtf?");
 
                     WriteSmallProductInfo(prod);
-                    Console.WriteLine($"count - {pair.Value}");
+                    Console.WriteLine($"count\t{pair.Value}");
                 }
-            }
-            Console.WriteLine("\n\n\n");
         }
 
         private void ShwoMyOrders()
@@ -443,9 +725,9 @@ namespace BusinessLogic.View
         {
             Console.WriteLine("Enter product id");
             var id = Console.ReadLine();
-            if (id == null)
+            if (id == "")
             {
-                Console.WriteLine("id null. try again");
+                Console.WriteLine("id empty. try again");
                 return;
             }
 
@@ -497,16 +779,16 @@ namespace BusinessLogic.View
 
         private void WriteSmallProductInfo(Product prod)
         {
-            Console.WriteLine($"\n\nproduct name - {prod.Name}\n" +
-                $"product id - {prod.Id}");
+            Console.WriteLine($"\n\nproduct name\t{prod.Name}\n" +
+                $"product id\t\t{prod.Id}");
         }
         private void WriteProductInfo(Product prod)
         {
-            Console.WriteLine($"\n\nproduct name - {prod.Name}\n" +
-                $"product id - {prod.Id}\n" +
-                $"product manufacturer - {prod.Manufacturer}\n" +
-                $"product price - {prod.Price}\n" +
-                $"in stock? - {(prod.InStock ? "yes" : "no")}\n\n");
+            Console.WriteLine($"\n\nproduct name\t\t\t{prod.Name}\n" +
+                $"product id\t\t\t{prod.Id}\n" +
+                $"product manufacturer\t{prod.Manufacturer}\n" +
+                $"product price\t\t{prod.Price}\n" +
+                $"in stock?\t\t\t{(prod.InStock ? "yes" : "no")}\n\n");
         }
 
         private void ProductList()
@@ -557,12 +839,6 @@ namespace BusinessLogic.View
                 }
             }   
         }
-
-        private void ChangeUserInfo()
-        {
-            throw new NotImplementedException();
-        }
-
 
     }
 }

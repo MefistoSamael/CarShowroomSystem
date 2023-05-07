@@ -20,7 +20,7 @@ namespace BusinessLogic.Entities.Users
         public Roles Role { get; private set; }
         public string FullName { get; set; }
 
-        public Customer(string login, string password, List<Order> userOrders, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem)
+        public Customer(string login, string password, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem)
         {
             Login = login;
             Password = password;
