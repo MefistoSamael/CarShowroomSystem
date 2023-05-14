@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -28,7 +29,7 @@ namespace BusinessLogic.Application
             return product;
         }
 
-        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock)
+        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
             Car car = new Car
             {
@@ -45,7 +46,8 @@ namespace BusinessLogic.Application
                 Name = name,
                 Price = price,
                 Manufacturer = manufacturer,
-                InStock = inStock
+                InStock = inStock,
+                PhotoPath = photoPath
             };
 
             db.AddCar(car);
@@ -54,7 +56,7 @@ namespace BusinessLogic.Application
 
         }
 
-        public Car? ChangeCarInfo(CarModel? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, CarColor? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock)
+        public Car? ChangeCarInfo(CarModel? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, CarColor? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
             Car? car = db.GetCar(id);
 
@@ -101,22 +103,26 @@ namespace BusinessLogic.Application
             if (inStock.HasValue)
                 car.InStock = inStock.Value;
 
+            if (photoPath != null)
+                car.PhotoPath = photoPath;
+
             db.ChangeCarInfo(id, car);
 
             return car;
         }
 
-        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
             EngineOil engineOil = new EngineOil { 
                 Composition = composition,
                 Viscosity = viscosity,
                 EngineType = engineType,
-                Id = id,
+                Id = Guid.NewGuid(),
                 Name = name,
                 Price = price,
                 Manufacturer = manufacturer,
-                InStock = inStock
+                InStock = inStock,
+                PhotoPath = photoPath
             };
 
             db.AddEngineOil(engineOil);
@@ -124,7 +130,7 @@ namespace BusinessLogic.Application
             return engineOil;
         }
 
-        public EngineOil? ChangeEngineOilInfo(string? composition, string? viscosity, EngineType? engineType, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock)
+        public EngineOil? ChangeEngineOilInfo(string? composition, string? viscosity, EngineType? engineType, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
             EngineOil? engineOil = db.GetEngineOil(id);
 
@@ -155,12 +161,15 @@ namespace BusinessLogic.Application
             if (inStock.HasValue)
                 engineOil.InStock = inStock.Value;
 
+            if (photoPath != null)
+                engineOil.PhotoPath = photoPath;
+
             db.ChangeEngineOilInfo(id, engineOil);
 
             return engineOil;
         }
 
-        public Tires CreateTires(SeasonType season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public Tires CreateTires(SeasonType season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
             Tires tires = new Tires
             {
@@ -171,11 +180,12 @@ namespace BusinessLogic.Application
                 RimDiameter = RimDiameter,
                 LoadIndex = LoadIndex,
                 SpeedIndex = SpeedIndex,
-                Id = id,
+                Id = Guid.NewGuid(),
                 Name = name,
                 Price = price,
                 Manufacturer = manufacturer,
                 InStock = inStock,
+                PhotoPath = photoPath
             };
 
             db.AddTires(tires);
@@ -183,7 +193,7 @@ namespace BusinessLogic.Application
             return tires;
         }
 
-        public Tires? ChangeTiresInfo(SeasonType? season, float? width, float? profileHeight, ConstructionType? constructionType, float? rimDiameter, float? loadIndex, char? speedIndex, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock)
+        public Tires? ChangeTiresInfo(SeasonType? season, float? width, float? profileHeight, ConstructionType? constructionType, float? rimDiameter, float? loadIndex, char? speedIndex, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
             Tires? tires = db.GetTires(id);
 
@@ -225,6 +235,9 @@ namespace BusinessLogic.Application
 
             if (inStock.HasValue)
                 tires.InStock = inStock.Value;
+
+            if (photoPath != null)
+                tires.PhotoPath = photoPath;
 
             db.ChangeTiresInfo(id, tires);
 

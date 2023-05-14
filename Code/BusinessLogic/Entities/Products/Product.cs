@@ -16,17 +16,8 @@ namespace BusinessLogic.Entities.Products
             Price = 0;
             Manufacturer = "";
             InStock = false;
-
+            PhotoPath = "";
         }
-
-        //public Product(Guid id, string name, decimal price, string manufacturer, bool inStock)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //    Price = price;
-        //    Manufacturer = manufacturer;
-        //    InStock = inStock;
-        //}
 
         public Guid Id { get; set; }
 
@@ -37,6 +28,8 @@ namespace BusinessLogic.Entities.Products
         public string Manufacturer { get; set; }
 
         public bool InStock { get; set; }
+
+        public string PhotoPath { get; set; }
 
     }
 }

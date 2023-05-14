@@ -123,34 +123,36 @@ namespace BusinessLogic.Model
             throw new Exception("will be added sooner");
         }
 
-        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock)
+        //
+        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
-            return productCreator.CreateCar(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, name, price, manufacturer, inStock);
+            return productCreator.CreateCar(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
+
         }
 
-        public Car? ChangeCarInfo(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public Car? ChangeCarInfo(CarModel? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, CarColor? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
-            return productCreator.ChangeCarInfo(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, id, name, price, manufacturer, inStock);
+            return productCreator.ChangeCarInfo(model, engine, gearbox, fuelTankCapacity, manufactureDate, color, wheelDrive, power, fuelConsumption, id, name, price, manufacturer, inStock, photoPath);
         }
 
-        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock)
+        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
-            return CreateEngineOil(composition, viscosity, engineType, name, price, manufacturer, inStock);
+            return productCreator.CreateEngineOil(composition, viscosity, engineType, name, price, manufacturer, inStock, photoPath);
         }
 
-        public EngineOil? ChangeEngineOilInfo(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public EngineOil? ChangeEngineOilInfo(string? composition, string? viscosity, EngineType? engineType, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
-            return productCreator.ChangeEngineOilInfo(composition, viscosity, engineType, id, name, price, manufacturer, inStock);
+            return productCreator.ChangeEngineOilInfo(composition, viscosity, engineType, id, name, price, manufacturer, inStock, photoPath);
         }
 
-        public Tires CreateTires(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, string name, decimal price, string manufacturer, bool inStock)
+        public Tires CreateTires(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
-            return CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name, price, manufacturer, inStock);
+            return productCreator.CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name, price, manufacturer, inStock, photoPath);
         }
 
-        public Tires? ChangeTiresInfo(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock)
+        public Tires? ChangeTiresInfo(SeasonType? season, float? width, float? profileHeight, ConstructionType? constructionType, float? rimDiameter, float? loadIndex, char? speedIndex, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
-            return productCreator.ChangeTiresInfo(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, id, name, price, manufacturer, inStock);
+            return productCreator.ChangeTiresInfo(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, id, name, price, manufacturer, inStock, photoPath);
         }
 
 

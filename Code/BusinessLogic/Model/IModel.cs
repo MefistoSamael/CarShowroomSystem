@@ -26,17 +26,17 @@ namespace BusinessLogic.Model
         //если какое то поле не изменяется - передавать Null
         public Product? ChangeProductInfo(Guid id, string name, decimal price, string manufacturer, bool inStock);
 
-        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock);
+        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath);
 
-        public Car? ChangeCarInfo(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, Guid id, string name, decimal price, string manufacturer, bool inStock);
-        
-        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock);
+        public Car? ChangeCarInfo(CarModel? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, CarColor? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath);
 
-        public EngineOil? ChangeEngineOilInfo(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock);
+        public EngineOil CreateEngineOil(string composition, string viscosity, EngineType engineType, string name, decimal price, string manufacturer, bool inStock, string photoPath);
 
-        public Tires CreateTires(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, string name, decimal price, string manufacturer, bool inStock);
+        public EngineOil? ChangeEngineOilInfo(string? composition, string? viscosity, EngineType? engineType, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath);
 
-        public Tires? ChangeTiresInfo(SeasonType season, float width, float profileHeight, ConstructionType constructionType, float rimDiameter, float loadIndex, char speedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock);
+        public Tires CreateTires(SeasonType season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, string name, decimal price, string manufacturer, bool inStock, string photoPath);
+
+        public Tires? ChangeTiresInfo(SeasonType? season, float? width, float? profileHeight, ConstructionType? constructionType, float? rimDiameter, float? loadIndex, char? speedIndex, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath);
 
         public bool DeleteProduct(Guid id);
 
