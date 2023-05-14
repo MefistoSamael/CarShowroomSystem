@@ -1,0 +1,19 @@
+Index: Tests/TestProductCreator.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using BusinessLogic.Application;\r\nusing Moq;\r\n\r\nnamespace BusinessLogic.Tests\r\n{\r\n    [TestFixture]\r\n    public class ProductCreatorTests\r\n    {\r\n        private Mock<IDBRequestSystem>? _mockDb;\r\n\r\n        [SetUp]\r\n        public void Setup()\r\n        {\r\n            _mockDb = new Mock<IDBRequestSystem>();\r\n        }\r\n\r\n        [Test]\r\n        public void CreateProduct_ShouldReturnProductWithCorrectProperties()\r\n        {\r\n            // Arrange\r\n            if (_mockDb == null) return;\r\n            var productCreator = new ProductCreator { db = _mockDb.Object };\r\n            var id = Guid.NewGuid();\r\n            var name = \"Product1\";\r\n            var manufacturer = \"Manufacturer1\";\r\n            var inStock = true;\r\n            var price = 1m;\r\n\r\n            // Act\r\n            var result = productCreator.CreateProduct(id, name, manufacturer, inStock, price);\r\n\r\n            // Assert\r\n            Assert.IsNotNull(result);\r\n            Assert.AreEqual(id, result.Id);\r\n            Assert.AreEqual(name, result.Name);\r\n            Assert.AreEqual(manufacturer, result.Manufacturer);\r\n            Assert.AreEqual(inStock, result.InStock);\r\n            Assert.AreEqual(price, result.Price);\r\n\r\n            _mockDb.Verify(x => x.AddProduct(result), Times.Once);\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/Tests/TestProductCreator.cs b/Tests/TestProductCreator.cs
+--- a/Tests/TestProductCreator.cs	
++++ b/Tests/TestProductCreator.cs	
+@@ -21,8 +21,8 @@
+             if (_mockDb == null) return;
+             var productCreator = new ProductCreator { db = _mockDb.Object };
+             var id = Guid.NewGuid();
+-            var name = "Product1";
+-            var manufacturer = "Manufacturer1";
++            var name = "AhuitelnayaTachka";
++            var manufacturer = "BMW";
+             var inStock = true;
+             var price = 1m;
+ 
