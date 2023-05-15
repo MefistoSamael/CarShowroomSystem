@@ -6,9 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eeb4831c-ff41-4d7e-834a-b466996f7477" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_18_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_18_37__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/TestProductCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/TestProductCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +36,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/prog/SALOONproject/github/Code/BusinessLogic/Tests/TestProductCreator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/TestProductCreator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/prog/SALOONproject/github/Code/BusinessLogic/Tests/TestProductCreator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -55,7 +53,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderDotCoverFilteringPageId&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -98,6 +96,10 @@
       <workItem from="1684060109461" duration="9635000" />
       <workItem from="1684069836986" duration="3508000" />
       <workItem from="1684078719373" duration="951000" />
+      <workItem from="1684086684380" duration="6171000" />
+      <workItem from="1684093483776" duration="1164000" />
+      <workItem from="1684156874112" duration="25000" />
+      <workItem from="1684156912440" duration="2350000" />
     </task>
     <task id="LOCAL-00001" summary="Added 1 test for ProductCreator in TestProductCreator.cs">
       <created>1684077522629</created>
@@ -106,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684077522629</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="работай пж">
+      <created>1684086452848</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684086452848</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,9 +125,32 @@
     <option name="coveragePercentColumnWidth" value="99" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="108" />
+    <option name="symbolColumnWidth" value="323" />
     <coverage-tree-state>
-      <expand />
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 33% 1261/1877" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 33% 1261/1877" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 24% 1261/1657" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 33% 1261/1877" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 24% 1261/1657" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 24% 1251/1647" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 33% 1261/1877" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 24% 1261/1657" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 24% 1251/1647" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Application 27% 313/430" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
       <select />
     </coverage-tree-state>
   </component>
@@ -138,6 +170,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added 1 test for ProductCreator in TestProductCreator.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 1 test for ProductCreator in TestProductCreator.cs" />
+    <MESSAGE value="работай пж" />
+    <option name="LAST_COMMIT_MESSAGE" value="работай пж" />
   </component>
 </project>
