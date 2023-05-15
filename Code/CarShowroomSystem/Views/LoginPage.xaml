@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+     Title="LoginPage"
+     x:Class="CarShowroomSystem.Views.LoginPage"
+     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <VerticalStackLayout>
+        <HorizontalStackLayout WidthRequest="300">
+            <Label
+                 FontSize="Medium"
+                 HorizontalOptions="Start"
+                 Margin="10,20,10,0"
+                 Text="User Name"
+                 VerticalOptions="Center"
+                 VerticalTextAlignment="Center" />  
+            <Entry
+                 HorizontalOptions="End"
+                 Placeholder="User Name"
+                 Text="{Binding Name}"
+                 WidthRequest="150" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout WidthRequest="300">
+            <Label
+                 FontSize="Medium"
+                 HorizontalOptions="Start"
+                 Margin="10,10,10,0"
+                 Text="Password"
+                 VerticalOptions="Center"
+                 VerticalTextAlignment="Center" />      
+            <Entry
+     HorizontalOptions="End"
+     Placeholder="Password"
+     IsPassword="True"
+     Text="{Binding Password}"
+     WidthRequest="150" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
