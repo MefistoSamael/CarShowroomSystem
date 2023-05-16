@@ -1,9 +1,8 @@
-using BusinessLogic.Application;
 using BusinessLogic.Entities.Products;
 
 using Moq;
 
-namespace BusinessLogic.Application.Tests
+namespace BusinessLogic.Application
 {
 
     [TestFixture]
@@ -27,34 +26,28 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void CreateProduct_AddsProductToDatabase()
             {
-                // Arrange
                 var id = Guid.NewGuid();
                 var name = "Test Product";
                 var manufacturer = "Test Manufacturer";
                 var inStock = true;
                 var price = 9.99m;
 
-                // Act
                 var result = _productCreator.CreateProduct(id, name, manufacturer, inStock, price);
 
-                // Assert
                 _dbMock.Verify(x => x.AddProduct(It.IsAny<Product>()), Times.Once);
             }
 
             [Test]
             public void CreateProduct_ReturnsCreatedProduct()
             {
-                // Arrange
                 var id = Guid.NewGuid();
                 var name = "Test Product";
                 var manufacturer = "Test Manufacturer";
                 var inStock = true;
                 var price = 9.99m;
 
-                // Act
                 var result = _productCreator.CreateProduct(id, name, manufacturer, inStock, price);
 
-                // Assert
                 Assert.IsInstanceOf<Product>(result);
                 Assert.AreEqual(id, result.Id);
                 Assert.AreEqual(name, result.Name);
@@ -81,7 +74,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void CreateCar_AddsCarToDatabase()
             {
-                // Arrange
                 var carModel = CarModel.Jeep_Wrangler;
                 var engineType = EngineType.Gasoline_Engine;
                 var gearboxType = GearboxType.SemiAutomatic_Transmission;
@@ -97,18 +89,15 @@ namespace BusinessLogic.Application.Tests
                 var inStock = true;
                 var photoPath = "/path/to/photo";
 
-                // Act
                 var result = _carCreator.CreateCar(carModel, engineType, gearboxType, fuelTankCapacity, manufactureDate,
                     carColor, wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
 
-                // Assert
                 _dbMock.Verify(x => x.AddCar(It.IsAny<Car>()), Times.Once);
             }
 
             [Test]
             public void CreateCar_ReturnsCreatedCar()
             {
-                // Arrange
                 var carModel = CarModel.Jeep_Wrangler;
                 var engineType = EngineType.Gasoline_Engine;
                 var gearboxType = GearboxType.SemiAutomatic_Transmission;
@@ -124,11 +113,9 @@ namespace BusinessLogic.Application.Tests
                 var inStock = true;
                 var photoPath = "/path/to/photo";
 
-                // Act
                 var result = _carCreator.CreateCar(carModel, engineType, gearboxType, fuelTankCapacity, manufactureDate,
                     carColor, wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
 
-                // Assert
                 Assert.IsInstanceOf<Car>(result);
                 Assert.AreEqual(carModel, result.Model);
                 Assert.AreEqual(engineType, result.Engine);
@@ -164,7 +151,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void ChangeCarInfo_CarExists_ReturnsCar()
             {
-                // Arrange
                 var car = new Car
                 {
                     Id = Guid.NewGuid(),
@@ -186,13 +172,11 @@ namespace BusinessLogic.Application.Tests
 
                 mockDb.Setup(x => x.GetCar(car.Id)).Returns(car);
 
-                // Act
                 var result = carManager.ChangeCarInfo(CarModel.Toyota_Corolla, EngineType.Electric_Motor,
                     GearboxType.Automatic_Transmission, 60, new DateTime(2022, 1, 1), CarColor.Red,
                     WheelDriveType.Rear_Wheel_Drive, 250, 12, car.Id, "Car2", 25000, "Manufacturer2", false,
                     "/photos/car2.jpg");
 
-                // Assert
                 Assert.AreEqual(result, car);
                 Assert.AreEqual(result.Model, CarModel.Toyota_Corolla);
                 Assert.AreEqual(result.Engine, EngineType.Electric_Motor);
@@ -214,16 +198,13 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void ChangeCarInfo_CarDoesNotExist_ReturnsNull()
             {
-                // Arrange
                 mockDb.Setup(x => x.GetCar(It.IsAny<Guid>())).Returns<Car>(null);
 
-                // Act
                 var result = carManager.ChangeCarInfo(CarModel.Toyota_Corolla, EngineType.Electric_Motor,
                     GearboxType.Automatic_Transmission, 60, new DateTime(2022, 1, 1), CarColor.Red,
                     WheelDriveType.Rear_Wheel_Drive, 250, 12, Guid.NewGuid(), "Car2", 25000, "Manufacturer2", false,
                     "/photos/car2.jpg");
 
-                // Assert
                 Assert.IsNull(result);
                 mockDb.Verify(x => x.ChangeCarInfo(It.IsAny<Guid>(), It.IsAny<Car>()), Times.Never);
             }
@@ -235,7 +216,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void CreateEngineOil_AddsToDatabase()
             {
-                // Arrange
                 string composition = "synthetic";
                 string viscosity = "5W-30";
                 EngineType engineType = EngineType.Gasoline_Engine;
@@ -253,11 +233,9 @@ namespace BusinessLogic.Application.Tests
 
                 var engineOilService = new ProductCreator() { db = mockDb.Object };
 
-                // Act
                 var result = engineOilService.CreateEngineOil(composition, viscosity, engineType, name, price,
                     manufacturer, inStock, photoPath);
 
-                // Assert
                 Assert.IsNotNull(result);
                 Assert.AreEqual(engineOil.Composition, composition);
                 Assert.AreEqual(engineOil.Viscosity, viscosity);
@@ -278,7 +256,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void ChangeEngineOilInfo_UpdatesEngineOilInfo()
             {
-                // Arrange
                 var mockDb = new Mock<IDBRequestSystem>();
                 var engineOil = new EngineOil
                 {
@@ -295,7 +272,6 @@ namespace BusinessLogic.Application.Tests
                 mockDb.Setup(db => db.GetEngineOil(engineOil.Id)).Returns(engineOil);
                 var service = new ProductCreator() { db = mockDb.Object };
 
-                // Act
                 var updatedEngineOil = service.ChangeEngineOilInfo(
                     composition: "mineral",
                     viscosity: "10W-40",
@@ -307,7 +283,6 @@ namespace BusinessLogic.Application.Tests
                     inStock: false,
                     photoPath: "new-photo.jpg");
 
-                // Assert
                 Assert.IsNotNull(updatedEngineOil);
                 Assert.AreEqual("mineral", updatedEngineOil.Composition);
                 Assert.AreEqual("10W-40", updatedEngineOil.Viscosity);
@@ -339,7 +314,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void CreateTires_WithValidData_ShouldReturnNewTires()
             {
-                // Arrange
                 var season = SeasonType.Winter;
                 var width = 195f;
                 var profileHeight = 65f;
@@ -372,11 +346,9 @@ namespace BusinessLogic.Application.Tests
 
                 mockDatabase.Setup(x => x.AddTires(expectedTires)).Verifiable();
 
-                // Act
                 var actualTires = tiresService.CreateTires(season, width, profileHeight, constructionType, rimDiameter,
                     loadIndex, speedIndex, name, price, manufacturer, inStock, photoPath);
 
-                // Assert
                 Assert.IsNotNull(actualTires);
                 Assert.AreEqual(expectedTires.Season, actualTires.Season);
                 Assert.AreEqual(expectedTires.Width, actualTires.Width);
@@ -402,7 +374,6 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void ChangeTiresInfo_UpdatesTiresInfoInDatabase()
             {
-                // arrange
                 Guid id = Guid.NewGuid();
                 var mockDb = new Mock<IDBRequestSystem>();
                 var tires = new Tires
@@ -424,7 +395,6 @@ namespace BusinessLogic.Application.Tests
                 mockDb.Setup(db => db.GetTires(id)).Returns(tires);
                 var tiresService = new ProductCreator() { db = mockDb.Object };
 
-                // act
                 Tires? result = tiresService.ChangeTiresInfo(
                     SeasonType.Autumn,
                     215,
@@ -441,7 +411,6 @@ namespace BusinessLogic.Application.Tests
                     "/path/to/new/photo"
                 );
 
-                // assert
                 Assert.IsNotNull(result);
                 Assert.AreEqual(SeasonType.Autumn, result.Season);
                 Assert.AreEqual(215, result.Width);
@@ -468,14 +437,11 @@ namespace BusinessLogic.Application.Tests
             [Test]
             public void Demonstration_CreatesProductsInDatabase()
             {
-                // arrange
                 var mockDb = new Mock<IDBRequestSystem>();
                 var productService = new ProductCreator() { db = mockDb.Object };
 
-                // act
                 productService.Demonstration();
 
-                // assert
                 mockDb.Verify(db => db.AddProduct(It.IsAny<Product>()), Times.Exactly(3));
             }
         }

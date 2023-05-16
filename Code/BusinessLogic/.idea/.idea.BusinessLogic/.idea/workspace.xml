@@ -5,13 +5,20 @@
     <projectFile>Tests/Tests.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eeb4831c-ff41-4d7e-834a-b466996f7477" name="Changes" comment="33% покрытия всего бека.&#10;В TestProductCreator.cs лежат тесты для ProductCreator.cs.&#10;Для того, чтобы тесты запускались должен быть установлен пакет Microsoft.NET.Test.Sdk версии 17.5.0 и для проекта BusinessLogic и для проекта Tests. Однако, проект не запускается как обычно, если установлен этот пакет, поэтому для того, чтобы запустить, надо удалить этот пакет для BusinessLogic (потом всегда можно установить снова).&#10;Таким образом, нам этот пакет нужен только тогда, когда собираемся тестировать проект. Пакет устанавливается и удаляется в 2 клика.">
-      <change afterPath="$PROJECT_DIR$/Tests/TestCustomerRequestHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/TestOrderHandleSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/TestUserControlSystem.cs" afterDir="false" />
+    <list default="true" id="eeb4831c-ff41-4d7e-834a-b466996f7477" name="Changes" comment="+тесты для классов из Application, в TestOrderHandleSystem.cs последний тест не проходит, мб имеет смысл">
+      <change afterPath="$PROJECT_DIR$/Tests/Application/TestUserControlSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Controller/TestController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Entities/Users/TestAdmin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Entities/Users/TestCustomer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Entities/Users/TestSeller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Entities/Users/TestUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Model/TestModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessLogic/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Setup/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Setup/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/TestProductCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/TestProductCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/TestCustomerRequestHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Application/TestCustomerRequestHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/TestOrderHandleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Application/TestOrderHandleSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/TestProductCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Application/TestProductCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/TestUserControlSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +49,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b8d2795a624ec1ca285de7c049f728624e8b8a82388f8d67db20c33442b28f53/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/efd3e9c4749621d4a53b45d7117d2a581e02a265c444a040f1387a155db/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tests/TestProductCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/prog/SALOONproject/github/Code/BusinessLogic/Setup/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/Application/TestProductCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/Application/TestUserControlSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/Entities/Users/TestAdmin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -54,22 +64,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\jonny\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\jonny\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\jonny\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\jonny\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\jonny\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\jonny\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.BusinessLogic">
     <configuration name="BusinessLogic" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -105,7 +116,7 @@
       <workItem from="1684086684380" duration="6171000" />
       <workItem from="1684093483776" duration="1164000" />
       <workItem from="1684156874112" duration="25000" />
-      <workItem from="1684156912440" duration="13338000" />
+      <workItem from="1684156912440" duration="34373000" />
     </task>
     <task id="LOCAL-00001" summary="Added 1 test for ProductCreator in TestProductCreator.cs">
       <created>1684077522629</created>
@@ -128,33 +139,40 @@
       <option name="project" value="LOCAL" />
       <updated>1684159780910</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="+тесты для классов из Application, в TestOrderHandleSystem.cs последний тест не проходит, мб имеет смысл">
+      <created>1684172078687</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684172078687</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnitTestsCoverage.Settings">
-    <option name="coveragePercentColumnWidth" value="93" />
+    <option name="coveragePercentColumnWidth" value="33" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="206" />
+    <option name="symbolColumnWidth" value="61" />
     <coverage-tree-state>
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 37% 1269/2013" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 71% 974/3417" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 37% 1269/2013" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="BusinessLogic 28% 1248/1725" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 71% 974/3417" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 60% 969/2427" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 37% 1269/2013" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="BusinessLogic 28% 1248/1725" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="BusinessLogic 28% 1238/1715" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 71% 974/3417" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 60% 969/2427" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="BusinessLogic 60% 959/2417" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -178,6 +196,7 @@
     <MESSAGE value="Added 1 test for ProductCreator in TestProductCreator.cs" />
     <MESSAGE value="работай пж" />
     <MESSAGE value="33% покрытия всего бека.&#10;В TestProductCreator.cs лежат тесты для ProductCreator.cs.&#10;Для того, чтобы тесты запускались должен быть установлен пакет Microsoft.NET.Test.Sdk версии 17.5.0 и для проекта BusinessLogic и для проекта Tests. Однако, проект не запускается как обычно, если установлен этот пакет, поэтому для того, чтобы запустить, надо удалить этот пакет для BusinessLogic (потом всегда можно установить снова).&#10;Таким образом, нам этот пакет нужен только тогда, когда собираемся тестировать проект. Пакет устанавливается и удаляется в 2 клика." />
-    <option name="LAST_COMMIT_MESSAGE" value="33% покрытия всего бека.&#10;В TestProductCreator.cs лежат тесты для ProductCreator.cs.&#10;Для того, чтобы тесты запускались должен быть установлен пакет Microsoft.NET.Test.Sdk версии 17.5.0 и для проекта BusinessLogic и для проекта Tests. Однако, проект не запускается как обычно, если установлен этот пакет, поэтому для того, чтобы запустить, надо удалить этот пакет для BusinessLogic (потом всегда можно установить снова).&#10;Таким образом, нам этот пакет нужен только тогда, когда собираемся тестировать проект. Пакет устанавливается и удаляется в 2 клика." />
+    <MESSAGE value="+тесты для классов из Application, в TestOrderHandleSystem.cs последний тест не проходит, мб имеет смысл" />
+    <option name="LAST_COMMIT_MESSAGE" value="+тесты для классов из Application, в TestOrderHandleSystem.cs последний тест не проходит, мб имеет смысл" />
   </component>
 </project>

@@ -21,4 +21,8 @@
       <ProjectReference Include="..\BusinessLogic.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Entities\Products" />
+    </ItemGroup>
+
 </Project>
