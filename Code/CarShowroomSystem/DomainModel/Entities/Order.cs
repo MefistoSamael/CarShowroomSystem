@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.Entities;
+﻿namespace CarShowroomSystem.Entities;
 
 public class Order
 {

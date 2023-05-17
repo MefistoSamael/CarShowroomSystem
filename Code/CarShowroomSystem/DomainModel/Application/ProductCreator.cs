@@ -6,9 +6,9 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using BusinessLogic.Entities.Products;
+using CarShowroomSystem.Entities.Products;
 
-namespace BusinessLogic.Application
+namespace CarShowroomSystem.Application
 {
     internal class ProductCreator
     {

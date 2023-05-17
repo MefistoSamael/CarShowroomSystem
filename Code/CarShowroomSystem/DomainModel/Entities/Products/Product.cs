@@ -5,7 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Entities.Products
+namespace CarShowroomSystem.Entities.Products
 {
     public class Product
     {

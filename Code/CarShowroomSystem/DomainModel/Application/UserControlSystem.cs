@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusinessLogic.Entities.Users;
+using CarShowroomSystem.Entities.Users;
 
-namespace BusinessLogic.Application
+namespace CarShowroomSystem.Application
 {
     public class UserControlSystem
     {

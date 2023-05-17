@@ -1,11 +1,11 @@
-﻿using BusinessLogic.Application;
+﻿using CarShowroomSystem.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Entities.Users
+namespace CarShowroomSystem.Entities.Users
 {
     internal class Customer : IUser
     {

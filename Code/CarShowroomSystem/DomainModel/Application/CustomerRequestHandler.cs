@@ -1,8 +1,8 @@
-﻿using BusinessLogic.Entities;
-using BusinessLogic.Entities.Users;
+﻿using CarShowroomSystem.Entities;
+using CarShowroomSystem.Entities.Users;
 using System.Data;
 
-namespace BusinessLogic.Application
+namespace CarShowroomSystem.Application
 {
     public class CustomerRequestHandler
     {

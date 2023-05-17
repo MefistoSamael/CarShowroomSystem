@@ -3,8 +3,83 @@
      Title="LoginPage"
      x:Class="CarShowroomSystem.Views.LoginPage"
      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Prompt" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes"
+                    Value="Bold" />
+                <Setter Property="HorizontalTextAlignment"
+                    Value="Center" />
+                <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter Property="VerticalOptions"
+                    Value="Center" />
+                <Setter Property="HorizontalOptions"
+                    Value="End" />
+            </Style>
+            <Style x:Key="LoginButton" TargetType="Button">
+                <Setter Property="BackgroundColor"
+                    Value="LightGray" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="WidthRequest" Value="125" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <VerticalStackLayout>
+        <Grid
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            RowSpacing="10">
+            <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="User name" />        
+            <Entry
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Placeholder="User name"
+            Text="{Binding LogIn}"
+            WidthRequest="150" />
+            <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalOptions="End"
+            Style="{StaticResource Prompt}"
+            Text="Password" />
+            <Entry
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            IsPassword="True"
+            Placeholder="Password"
+            Text="{Binding Password}"
+            WidthRequest="150" />
+            <Button
+            HorizontalOptions="End"
+            Grid.Row="2"
+            Grid.Column="0"
+            Command="{Binding SubmitCommand}"
+            Style="{StaticResource LoginButton}"
+            Text="Submit" />
+            <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Command="{Binding CreateAccountCommand}"
+            Style="{StaticResource LoginButton}"
+            Text="Create Account" />
+        </Grid>
+
+
+        <!--ввод логина--><!--
         <HorizontalStackLayout WidthRequest="300">
             <Label
                  FontSize="Medium"
@@ -12,13 +87,14 @@
                  Margin="10,20,10,0"
                  Text="User Name"
                  VerticalOptions="Center"
-                 VerticalTextAlignment="Center" />  
+                 VerticalTextAlignment="Center" />
             <Entry
                  HorizontalOptions="End"
                  Placeholder="User Name"
-                 Text="{Binding Name}"
+                 Text="{Binding LogIn}"
                  WidthRequest="150" />
         </HorizontalStackLayout>
+        --><!--ввод пароля--><!--
         <HorizontalStackLayout WidthRequest="300">
             <Label
                  FontSize="Medium"
@@ -26,13 +102,30 @@
                  Margin="10,10,10,0"
                  Text="Password"
                  VerticalOptions="Center"
-                 VerticalTextAlignment="Center" />      
+                 VerticalTextAlignment="Center" />
             <Entry
-     HorizontalOptions="End"
-     Placeholder="Password"
-     IsPassword="True"
-     Text="{Binding Password}"
-     WidthRequest="150" />
+                 HorizontalOptions="End"
+                 Placeholder="Password"
+                 IsPassword="True"
+                 Text="{Binding Password}"
+                 WidthRequest="150" />
         </HorizontalStackLayout>
+        --><!--кнопки--><!--
+        <HorizontalStackLayout 
+            HorizontalOptions="Center"
+            Margin="10,10,10,0">
+            <Button
+                 BackgroundColor="Gray"
+                 Command="{Binding SubmitCommand}"
+                 Margin="5"
+                 HorizontalOptions="Start"
+                 Text="Submit" />
+            <Button
+                 BackgroundColor="Gray"
+                 Command="{Binding CreateAccountCommand}"
+                 Margin="5"
+                 Text="Create Account" />
+        </HorizontalStackLayout>-->
+
     </VerticalStackLayout>
 </ContentPage>

@@ -2,15 +2,35 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.Messaging;
 using CarShowroomSystem.ViewModels;
+using System.Xml.Linq;
+using CarShowroomSystem.Model;
 
 namespace CarShowroomSystem.Views;
 
 public partial class LoginPage : ContentPage
 {
-    LoginViewModel vm = new LoginViewModel();
-    public LoginPage()
+    // поскольку dependecy injection не работает, дом труба его шатал,
+    // нужны два конструктора: один на первоначальное создание страницы(при запуске программы будет вызвана
+    // именна это страница с этим конструктором), второй - если на страницу перейдут из другой страницы(чел
+    // вошел в аккаунт и решил выйти)
+
+
+    LoginViewModel vm;
+    // конструктор, используемый при переходе со страницы
+    public LoginPage(LoginViewModel vm)
     {
+        this.vm = vm;
+
         BindingContext = vm;
         InitializeComponent();
     }
+
+    //конструктор первоначальной загрузки
+    //public LoginPage()
+    //{
+    //    this.vm = new LoginViewModel(new Model.Model());
+
+    //    BindingContext = vm;
+    //    InitializeComponent();
+    //}
 }

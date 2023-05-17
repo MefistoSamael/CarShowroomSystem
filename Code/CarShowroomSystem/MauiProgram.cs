@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using CarShowroomSystem.Model;
+using CarShowroomSystem.ViewModels;
 
 namespace CarShowroomSystem;
 
@@ -21,6 +23,8 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+        builder.Services.AddTransient<IModel, Model.Model>();
+        builder.Services.AddTransient<LoginViewModel>();
+        return builder.Build();
 	}
 }

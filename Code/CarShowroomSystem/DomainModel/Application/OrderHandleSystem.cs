@@ -1,5 +1,5 @@
-﻿using BusinessLogic.Entities;
-using BusinessLogic.Entities.Products;
+﻿using CarShowroomSystem.Entities;
+using CarShowroomSystem.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Application
+namespace CarShowroomSystem.Application
 {
     public class OrderHandleSystem
     {

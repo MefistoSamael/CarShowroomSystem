@@ -1,11 +1,14 @@
-﻿namespace CarShowroomSystem;
+﻿using CarShowroomSystem.ViewModels;
+using CarShowroomSystem.Views;
 
-public partial class App : Application
+namespace CarShowroomSystem;
+
+public partial class App : Microsoft.Maui.Controls.Application
 {
-	public App()
+	public App(LoginViewModel loginViewModel)
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new LoginPage(loginViewModel);
 	}
 }

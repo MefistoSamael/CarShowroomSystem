@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Entities.Products
+namespace CarShowroomSystem.Entities.Products
 {
     public class EngineOil : Product
     {

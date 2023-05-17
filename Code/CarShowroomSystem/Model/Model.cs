@@ -1,7 +1,7 @@
-﻿using BusinessLogic.Application;
-using BusinessLogic.Entities;
-using BusinessLogic.Entities.Products;
-using BusinessLogic.Entities.Users;
+﻿using CarShowroomSystem.Application;
+using CarShowroomSystem.Entities;
+using CarShowroomSystem.Entities.Products;
+using CarShowroomSystem.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace BusinessLogic.Model
+namespace CarShowroomSystem.Model
 {
     public class Model : IModel
     {

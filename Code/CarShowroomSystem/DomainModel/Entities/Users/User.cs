@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Application;
+﻿using CarShowroomSystem.Application;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ public enum Roles
     admin = 3
 }
 
-namespace BusinessLogic.Entities.Users
+namespace CarShowroomSystem.Entities.Users
 {
     public interface IUser
     {

@@ -1,13 +1,13 @@
-﻿using BusinessLogic.Entities.Products;
-using BusinessLogic.Entities.Users;
-using BusinessLogic.Entities;
+﻿using CarShowroomSystem.Entities.Products;
+using CarShowroomSystem.Entities.Users;
+using CarShowroomSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Model
+namespace CarShowroomSystem.Model
 {
     public interface IModel
     {
