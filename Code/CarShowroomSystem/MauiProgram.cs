@@ -17,14 +17,17 @@ public static class MauiProgram
       {
           fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
           fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-      });
+      }).UseMauiMaps();
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
 
         builder.Services.AddTransient<IModel, Model.Model>();
+
+        //view models
         builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<MainViewModel>();
         return builder.Build();
 	}
 }

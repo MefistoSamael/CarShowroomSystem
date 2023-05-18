@@ -25,12 +25,9 @@ public partial class LoginPage : ContentPage
         InitializeComponent();
     }
 
-    //конструктор первоначальной загрузки
-    //public LoginPage()
-    //{
-    //    this.vm = new LoginViewModel(new Model.Model());
+    //шоб работало Application.Current.MainPage = new AppShell();
+    public LoginPage()
+    {
 
-    //    BindingContext = vm;
-    //    InitializeComponent();
-    //}
+    }
 }

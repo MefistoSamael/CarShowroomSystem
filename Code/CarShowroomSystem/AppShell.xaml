@@ -6,10 +6,12 @@
     xmlns:local="clr-namespace:CarShowroomSystem"
     xmlns:views="clr-namespace:CarShowroomSystem.Views"
     Shell.FlyoutBehavior="Disabled">
+    
+    <TabBar>
+        <ShellContent
+        Title="Main Page"
+        ContentTemplate="{DataTemplate views:MainPage}" />
+    </TabBar>
 
-    <ShellContent
-        Title="Login Page"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" />
 
 </Shell>

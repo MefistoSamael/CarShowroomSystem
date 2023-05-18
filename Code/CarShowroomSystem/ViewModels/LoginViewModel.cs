@@ -35,9 +35,7 @@ public partial class LoginViewModel
         if (user != null) 
         {
             Microsoft.Maui.Controls.Application.Current.MainPage = new AppShell();
-            await Shell.Current.GoToAsync("mainpage");
 
-            await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Submit", $"You entered as {LogIn}", "OK");
             // код перехода на новую страницу
         }
         // иначе - оповещаем пользователя о неудаче
