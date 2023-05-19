@@ -4,11 +4,10 @@ namespace CarShowroomSystem.Views;
 
 public partial class MainPage : ContentPage
 {
-    private MainViewModel vm = new MainViewModel();
 
 	public MainPage() 
 	{
-        BindingContext = vm;
+        BindingContext = new MainViewModel();
         InitializeComponent();
     }
 

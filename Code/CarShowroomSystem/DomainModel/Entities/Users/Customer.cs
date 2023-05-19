@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarShowroomSystem.Entities.Users
 {
-    internal class Customer : IUser
+    public class Customer : IUser
     {
         public OrderHandleSystem orderHandleSystem { get; }
 
@@ -17,7 +17,7 @@ namespace CarShowroomSystem.Entities.Users
 
         public Dictionary<Guid, int> Bucket { get; set; }
 
-        public Roles Role { get; private set; }
+        public Roles Role { get;  set; }
         public string FullName { get; set; }
 
         public Customer(string login, string password, Dictionary<Guid, int> bucket, string fullName, OrderHandleSystem orderHandleSystem)

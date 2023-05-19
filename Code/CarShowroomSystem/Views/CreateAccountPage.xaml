@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CarShowroomSystem.Views.CreateAccountPage"
+             Shell.PresentationMode="NotAnimated"
              Title="CreateAccountPage">
 
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Text"
+            Placeholder="Enter Name"
+            Text="{Binding Name}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidateNameCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+
+        </Entry>
+        <Label
+            FontSize="13"
+            IsVisible="{Binding ShowNameErrorMessage}"
+            Text="{Binding NameErrorMessage}"
+            TextColor="Red" />
+
+        
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Text"
+            Placeholder="Enter Full Name"
+            Text="{Binding FullName}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidateFullNameCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="13"
+            Text="{Binding FullNameErrorMessage}"
+            IsVisible="{Binding ShowFullNameErrorMessage}"
+            TextColor="Red" />
+
+
+
+
+
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            IsPassword="True"
+            Keyboard="Default"
+            Placeholder="Enter Password"
+            Text="{Binding Password}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidatePasswordCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="13"
+            IsVisible="{Binding ShowPasswordErrorMessage}"
+            Text="{Binding PasswordErrorMessage}"
+            TextColor="Red" />
+        
+        <Button
+            Margin="0,30,0,0"
+            BackgroundColor="LightGray"
+            Command="{Binding SignUpCommand}"
+            CornerRadius="5"
+            HorizontalOptions="Center"
+            IsEnabled="{Binding EnableButton}"
+            Text="Sign up"
+            TextColor="Black"
+            TextTransform="None"
+            WidthRequest="100" />
+
     </VerticalStackLayout>
 
     <Shell.BackButtonBehavior>

@@ -5,12 +5,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CarShowroomSystem"
     xmlns:views="clr-namespace:CarShowroomSystem.Views"
+    Shell.PresentationMode="NotAnimated"
     Shell.FlyoutBehavior="Disabled">
     
+    <ShellContent
+        Shell.PresentationMode="NotAnimated"
+        Title="Login Page"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="login"/>
     <TabBar>
         <ShellContent
-        Title="Main Page"
-        ContentTemplate="{DataTemplate views:MainPage}" />
+            Shell.PresentationMode="NotAnimated"
+            Title="Main Page"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="main"/>
+
     </TabBar>
 
 

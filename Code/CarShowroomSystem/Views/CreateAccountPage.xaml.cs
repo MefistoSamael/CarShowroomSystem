@@ -1,12 +1,20 @@
+
+using CarShowroomSystem.Model;
+using CarShowroomSystem.ViewModels;
+
 namespace CarShowroomSystem.Views;
 
 public partial class CreateAccountPage : ContentPage
 {
-	public CreateAccountPage()
+	public CreateAccountPage(CreateAccountViewModel vm)
 	{
 		InitializeComponent();
-		var s = new BackButtonBehavior();
-		s.IsVisible = false;
-		Shell.SetBackButtonBehavior(Shell.Current,s);
+
+		BindingContext = vm;
 	}
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

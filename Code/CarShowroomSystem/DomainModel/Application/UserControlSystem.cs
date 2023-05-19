@@ -48,10 +48,10 @@ namespace CarShowroomSystem.Application
                     //break;
             }
 
-            if (!DB!.AddUser(user))
+            if (DB!.AddUser(user))
+                return user;
+            else
                 return null;
-
-            return user;
         }
 
         // удаляем пользователя

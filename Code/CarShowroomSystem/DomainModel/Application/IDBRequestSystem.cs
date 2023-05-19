@@ -116,7 +116,7 @@ namespace CarShowroomSystem.Application
 
         public bool AddUser(IUser user)
         {
-            if (!users.Contains(user)) 
+            if (!ContainsUserByLogIn(user.Login)) 
             {
                 users.Add(user);
                 return true;

@@ -9,6 +9,6 @@ public partial class App : Microsoft.Maui.Controls.Application
 	{
 		InitializeComponent();
 
-		MainPage = new LoginPage(loginViewModel);
+		MainPage = new AppShell();
 	}
 }
