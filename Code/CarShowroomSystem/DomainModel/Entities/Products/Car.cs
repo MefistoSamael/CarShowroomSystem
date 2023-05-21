@@ -12,32 +12,6 @@ namespace CarShowroomSystem.Entities.Products
         Honda_Civic,
         Ford_Mustang,
         Chevrolet_Camaro,
-        BMW_3_Series,
-        Mercedes_Benz_C_Class,
-        Audi_A4,
-        Nissan_Altima,
-        Jeep_Wrangler,
-        Subaru_Outback,
-        Hyundai_Sonata,
-        Kia_Optima,
-        Porsche_911,
-        Tesla_Model_S,
-        Volkswagen_Golf,
-        Ford_F_150,
-        Chevrolet_Silverado,
-        Dodge_Charger,
-        GMC_Sierra,
-        Toyota_Camry,
-        Honda_Accord,
-        Jeep_Grand_Cherokee,
-        Subaru_Forester,
-        BMW_5_Series,
-        Mercedes_Benz_E_Class,
-        Audi_Q5,
-        Nissan_Rogue,
-        Hyundai_Tucson,
-        Kia_Sportage,
-        Porsche_Cayenne
     }
 
     public enum EngineType
@@ -61,13 +35,6 @@ namespace CarShowroomSystem.Entities.Products
         Blue,
         Green,
         Yellow,
-        Orange,
-        Purple,
-        Pink,
-        Brown,
-        Black,
-        White,
-        Gray,
     }
 
     public enum WheelDriveType
@@ -79,7 +46,8 @@ namespace CarShowroomSystem.Entities.Products
 
     public class Car : Product
     {
-        public CarModel Model { get; set; }
+        public string Model { get; set; }
+
 
         public EngineType Engine { get; set; }
 
@@ -89,7 +57,8 @@ namespace CarShowroomSystem.Entities.Products
 
         public DateTime ManufactureDate { get; set; }
 
-        public CarColor Color { get; set; }
+        public string Color { get; set; }
+
 
         public WheelDriveType WheelDrive { get; set; }
 

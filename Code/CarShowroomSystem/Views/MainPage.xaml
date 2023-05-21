@@ -7,7 +7,7 @@
     <Shell.TitleView>
         <Grid ColumnDefinitions="9*,1*">
             <Label x:Name="title" HorizontalOptions="Start" Grid.Column="0" VerticalTextAlignment="Center"/>
-            <Button Text="test" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
+            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
     <HorizontalStackLayout>

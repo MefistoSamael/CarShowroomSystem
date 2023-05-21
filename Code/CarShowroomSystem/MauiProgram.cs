@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using CarShowroomSystem.Model;
 using CarShowroomSystem.ViewModels;
 using CarShowroomSystem.Views;
+using CarShowroomSystem.Views.Car;
+using CarShowroomSystem.ViewModels.Car;
 
 namespace CarShowroomSystem;
 
@@ -27,11 +29,13 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<MainViewModel>();
         builder.Services.AddTransient<CreateAccountViewModel>();
+        builder.Services.AddTransient<AddCarViewModel>();
 
         //pages
         builder.Services.AddTransient<CreateAccountPage>();
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<AddCarPage>();
 
         //model
         builder.Services.AddSingleton<IModel, Model.Model>();

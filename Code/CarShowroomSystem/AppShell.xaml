@@ -5,9 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CarShowroomSystem"
     xmlns:views="clr-namespace:CarShowroomSystem.Views"
+    xmlns:car="clr-namespace:CarShowroomSystem.Views.Car"
     Shell.PresentationMode="NotAnimated"
     Shell.FlyoutBehavior="Disabled">
-    
+
     <ShellContent
         Shell.PresentationMode="NotAnimated"
         Title="Login Page"

@@ -38,6 +38,7 @@ namespace CarShowroomSystem.ViewModels
             this.model = model;
             Products = new ObservableCollection<Product>(model.GetAllProducts());
         }
+
         //чтобы получать заначения из при переходе из других страниц
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
@@ -51,15 +52,18 @@ namespace CarShowroomSystem.ViewModels
         [RelayCommand]
         private async void Exit()
         {
+            //возвращает на страницу входа в аккаунт
             await Shell.Current.GoToAsync("//login", false);
         }
 
+        // открывает страницу на которой пользователь сможет добавить товар
         [RelayCommand]
         private async void AddProduct()
         {
-            
+            await Shell.Current.GoToAsync("addcarpage");
         }
 
+        // открывает страницу на которой пользователь сможет изменить конкретный товар
         [RelayCommand]
         private async void ChangeProduct()
         {
@@ -96,6 +100,19 @@ namespace CarShowroomSystem.ViewModels
                     Products.Add( product );
             }
 
+        }
+
+        // вызывает страницу, на которой отображается 
+        // подробная информация о товаре
+        [RelayCommand]
+        private async void ViewProduct()
+        {
+            if (selectedProduct == null)
+            {
+                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to delete", "ok");
+            }
+            else
+                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Ok", $"Ok", "ok");
         }
 
             // обраюотка изменения выбранного элемента в CollectionView

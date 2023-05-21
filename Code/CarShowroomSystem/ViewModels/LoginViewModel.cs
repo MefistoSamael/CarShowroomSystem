@@ -71,9 +71,8 @@ public partial class LoginViewModel
     [RelayCommand]
     private async Task CreateAccount()
     {
-        //Microsoft.Maui.Controls.Application.Current.MainPage = new AppShell();
-
-        await Shell.Current.GoToAsync($"createaccount", false);
+        await Shell.Current.GoToAsync("addcarpage");
+        //await Shell.Current.GoToAsync($"createaccount", false);
     }
 
     [RelayCommand]

@@ -29,7 +29,7 @@ namespace CarShowroomSystem.Application
             return product;
         }
 
-        public Car CreateCar(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
+        public Car CreateCar(string model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, string color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
             Car car = new Car
             {
@@ -56,7 +56,7 @@ namespace CarShowroomSystem.Application
 
         }
 
-        public Car? ChangeCarInfo(CarModel? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, CarColor? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
+        public Car? ChangeCarInfo(string? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, string? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
             Car? car = db.GetCar(id);
 
@@ -64,8 +64,8 @@ namespace CarShowroomSystem.Application
                 return null;
 
             // производим проверку аргументов на null и если они не равны Null, то присваиваем 
-            if (model.HasValue) // Проверяем, было ли передано значение для модели
-                car.Model = model.Value; // Присваиваем значение из аргумента метода
+            if (model != null) // Проверяем, было ли передано значение для модели
+                car.Model = model; // Присваиваем значение из аргумента метода
 
             if (engine.HasValue)
                 car.Engine = engine.Value;
@@ -79,8 +79,8 @@ namespace CarShowroomSystem.Application
             if (manufactureDate.HasValue)
                 car.ManufactureDate = manufactureDate.Value;
 
-            if (color.HasValue)
-                car.Color = color.Value;
+            if (color != null)
+                car.Color = color;
 
             if (wheelDrive.HasValue)
                 car.WheelDrive = wheelDrive.Value;
@@ -246,12 +246,10 @@ namespace CarShowroomSystem.Application
 
         public void Demonstration()
         {
-            CarModel carModel = CarModel.Toyota_Corolla;
             EngineType engineType = EngineType.Gasoline_Engine;
             GearboxType gearboxType = GearboxType.Automatic_Transmission;
             float fuelTankCapacity = 50.5f;
             DateTime manufactureDate = new DateTime(2022, 3, 15);
-            CarColor carColor = CarColor.Blue;
             WheelDriveType wheelDriveType = WheelDriveType.Front_Wheel_Drive;
             float power = 150.0f;
             float fuelConsumption = 8.5f;
@@ -261,7 +259,7 @@ namespace CarShowroomSystem.Application
             bool inStock = true;
             string photoPath = "https://freepngimg.com/download/temp_png/9-2-car-high-quality-png.jpeg";
 
-            CreateCar(carModel, engineType, gearboxType, fuelTankCapacity, manufactureDate, carColor, wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
+            CreateCar("Toyota_Corolla", engineType, gearboxType, fuelTankCapacity, manufactureDate, "Blue", wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
 
             string composition = "Synthetic";
             string viscosity = "5W-30";
