@@ -23,6 +23,11 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+        //view models
+        builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<MainViewModel>();
+        builder.Services.AddTransient<CreateAccountViewModel>();
+
         //pages
         builder.Services.AddTransient<CreateAccountPage>();
         builder.Services.AddTransient<LoginPage>();
@@ -31,10 +36,6 @@ public static class MauiProgram
         //model
         builder.Services.AddSingleton<IModel, Model.Model>();
 
-        //view models
-        builder.Services.AddTransient<LoginViewModel>();
-        builder.Services.AddTransient<MainViewModel>();
-        builder.Services.AddTransient<CreateAccountViewModel>();
         return builder.Build();
 	}
 }

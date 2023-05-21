@@ -10,38 +10,74 @@
             <Button Text="test" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
+    <HorizontalStackLayout>
+        <CollectionView 
+            ItemsSource="{Binding Products}"
+            WidthRequest="500"
+            x:Name="FriendsList"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding HandleSelectionChangedCommand}" 
+            SelectionChangedCommandParameter="{Binding Path=SelectedItem, Source={x:Reference FriendsList}}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                           Source="{Binding PhotoPath}"
+                           Aspect="AspectFill"
+                           HeightRequest="100"
+                           WidthRequest="100" />
+                        <Label Grid.Column="1"
+                           Text="{Binding Name}"
+                           FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Price}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button 
+            Text="AddProduct"
+            Command ="{Binding AddProductCommand}"
+            BackgroundColor="Red"  
+            WidthRequest="200"
+            HorizontalOptions="Fill"
+            IsVisible="{Binding IsAdmin}"/>
+        <Button
+            Text="ChangeProduct"
+            Command ="{Binding ChangeProductCommand}"
+            BackgroundColor="Red"
+            WidthRequest="200"
+            HorizontalOptions="Fill"
+            IsVisible="{Binding IsAdmin}"/>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <Button 
+            Text="DeleteProduct"
+            Command ="{Binding DeleteProductCommand}"
+            BackgroundColor="Red"
+            WidthRequest="200"
+            HorizontalOptions="Fill"
+            IsVisible="{Binding IsAdmin}">
+        </Button>
+        
+        <Button 
+            Text="ViewProduct"
+            Command ="{Binding ViewProductCommand}"
+            BackgroundColor="Red"  
+            WidthRequest="200"
+            HorizontalOptions="Fill"/>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center"/>
-            <Label Text="{Binding Id}" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+    </HorizontalStackLayout>
 
 </ContentPage>

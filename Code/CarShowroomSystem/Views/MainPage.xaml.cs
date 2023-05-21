@@ -1,13 +1,14 @@
-﻿using CarShowroomSystem.ViewModels;
+﻿using CarShowroomSystem.Model;
+using CarShowroomSystem.ViewModels;
 
 namespace CarShowroomSystem.Views;
 
 public partial class MainPage : ContentPage
 {
 
-	public MainPage() 
+	public MainPage(MainViewModel vm) 
 	{
-        BindingContext = new MainViewModel();
+        BindingContext = vm;
         InitializeComponent();
     }
 

@@ -14,11 +14,5 @@ namespace CarShowroomSystem.Entities.Products
 
         public EngineType EngineType { get; set; }
 
-        //public EngineOil(string composition, string viscosity, EngineType engineType, Guid id, string name, decimal price, string manufacturer, bool inStock) : base(id, name, price, manufacturer, inStock)
-        //{
-        //    Composition = composition;
-        //    Viscosity = viscosity;
-        //    EngineType = engineType;
-        //}
     }
 }

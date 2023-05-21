@@ -246,9 +246,57 @@ namespace CarShowroomSystem.Application
 
         public void Demonstration()
         {
-            CreateProduct(Guid.NewGuid(), "Product 1", "IP ISHO", true, 25);
-            CreateProduct(Guid.NewGuid(), "Product 2", "ROGA I KOPITA", false, 31);
-            CreateProduct(Guid.NewGuid(), "Product 3", "Antonio Pripizduchi", true, 5);
+            CarModel carModel = CarModel.Toyota_Corolla;
+            EngineType engineType = EngineType.Gasoline_Engine;
+            GearboxType gearboxType = GearboxType.Automatic_Transmission;
+            float fuelTankCapacity = 50.5f;
+            DateTime manufactureDate = new DateTime(2022, 3, 15);
+            CarColor carColor = CarColor.Blue;
+            WheelDriveType wheelDriveType = WheelDriveType.Front_Wheel_Drive;
+            float power = 150.0f;
+            float fuelConsumption = 8.5f;
+            string name = "My Car";
+            decimal price = 25000.0m;
+            string manufacturer = "Toyota";
+            bool inStock = true;
+            string photoPath = "https://freepngimg.com/download/temp_png/9-2-car-high-quality-png.jpeg";
+
+            CreateCar(carModel, engineType, gearboxType, fuelTankCapacity, manufactureDate, carColor, wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
+
+            string composition = "Synthetic";
+            string viscosity = "5W-30";
+            EngineType engineType1 = EngineType.Gasoline_Engine;
+            string name1 = "Premium Engine Oil";
+            decimal price1 = 49.99m;
+            string manufacturer1 = "OilCo";
+            bool inStock1 = true;
+            string photoPath1 = "https://cdn21vek.by/img/galleries/7645/821/preview_b/edgeprofessionallonglifeiii5w30157eco_castrol_62eb8a685bae8.jpeg";
+
+            CreateEngineOil(composition, viscosity, engineType1, name1, price1, manufacturer1, inStock1, photoPath1);
+
+            SeasonType season = SeasonType.Summer;
+            float width = 205.0f;
+            float profileHeight = 55.0f;
+            ConstructionType constructionType = ConstructionType.Tubeless;
+            float rimDiameter = 16.0f;
+            float loadIndex = 91.0f;
+            char speedIndex = 'H';
+            string name3 = "TireName2";
+            decimal price3 = 149.99m;
+            string manufacturer3= "TireCo";
+            bool inStock3 = true;
+            string photoPath3 = "https://cdn21vek.by/img/galleries/343/540/preview_b/artmotion27418570r1488t_belshina_56cad0d10f167.jpeg";
+
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+            CreateTires(season, width, profileHeight, constructionType, rimDiameter, loadIndex, speedIndex, name3, price3, manufacturer3, inStock3, photoPath3);
+
+
         }
     }
 }

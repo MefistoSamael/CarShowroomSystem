@@ -120,7 +120,7 @@ namespace CarShowroomSystem.Model
 
         public bool DeleteProduct(Guid id)
         {
-            throw new Exception("will be added sooner");
+            return dBRequestSystem.DeleteProduct(id);
         }
 
         //

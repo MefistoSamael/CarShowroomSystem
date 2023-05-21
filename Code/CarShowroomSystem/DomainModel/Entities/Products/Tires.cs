@@ -41,16 +41,6 @@ namespace CarShowroomSystem.Entities.Products
 
         public char SpeedIndex { get; set; }
 
-        //public Tires(SeasonType Season, float Width, float ProfileHeight, ConstructionType ConstructionType, float RimDiameter, float LoadIndex, char SpeedIndex, Guid id, string name, decimal price, string manufacturer, bool inStock) : base(id, name, price, manufacturer, inStock)
-        //{
-        //    this.Season = Season;
-        //    this.Width = Width;
-        //    this.ProfileHeight = ProfileHeight;
-        //    this.ConstructionType = ConstructionType;
-        //    this.RimDiameter= RimDiameter;
-        //    this.LoadIndex = LoadIndex;
-        //    this.SpeedIndex = SpeedIndex;
-        //}
     }
 
 }

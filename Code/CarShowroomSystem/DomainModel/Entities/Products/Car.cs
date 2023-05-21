@@ -97,20 +97,5 @@ namespace CarShowroomSystem.Entities.Products
 
         public float FuelConsumption { get; set; }
 
-        //public Car(CarModel model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, CarColor color, WheelDriveType wheelDrive, float weight, float power, float torque, float fuelConsumptionCity, float fuelConsumptionHighway, Guid id, string name, decimal price, string manufacturer, bool inStock) : base(id, name, price, manufacturer, inStock)
-        //{
-        //    Model = model;
-        //    Engine = engine;
-        //    Gearbox = gearbox;
-        //    FuelTankCapacity = fuelTankCapacity;
-        //    ManufactureDate = manufactureDate;
-        //    Color = color;
-        //    WheelDrive = wheelDrive;
-        //    Weight = weight;
-        //    Power = power;
-        //    Torque = torque;
-        //    FuelConsumptionCity = fuelConsumptionCity;
-        //    FuelConsumptionHighway = fuelConsumptionHighway;
-        //}
     }
 }
