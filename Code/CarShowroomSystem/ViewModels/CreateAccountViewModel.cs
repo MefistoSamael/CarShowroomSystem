@@ -33,6 +33,7 @@ namespace CarShowroomSystem.ViewModels
         public CreateAccountViewModel(IModel model)
         {
             this.model = model;
+            
         }
 
         [RelayCommand]
