@@ -16,7 +16,7 @@ using CarShowroomSystem.Views;
 namespace CarShowroomSystem.ViewModels
 {
     [ObservableObject]
-    public partial class MainViewModel : IQueryAttributable
+    public partial class MainViewModel 
     {
         // нынешний пользователь.
         // - Зачем?
@@ -139,8 +139,25 @@ namespace CarShowroomSystem.ViewModels
 
         }
 
-            // удаляет товар. ЧТобы удалить товар надо его выбрать
-            [RelayCommand]
+
+        // вызывает страницу, на которой отображается 
+        // подробная информация о товаре
+        [RelayCommand]
+        private async void ViewProduct()
+        {
+            if (selectedProduct == null)
+            {
+                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to delete", "ok");
+            }
+            else
+            {
+                var navigationParameter = new Dictionary<string, object>() { { "Car", selectedProduct } };
+                await Shell.Current.GoToAsync("viewcarpage", navigationParameter);
+            }
+        }
+
+        // удаляет товар. ЧТобы удалить товар надо его выбрать
+        [RelayCommand]
         private async void DeleteProduct()
         {
             // проверко на то, что выбранный товар не null
@@ -160,18 +177,6 @@ namespace CarShowroomSystem.ViewModels
 
         }
 
-        // вызывает страницу, на которой отображается 
-        // подробная информация о товаре
-        [RelayCommand]
-        private async void ViewProduct()
-        {
-            if (selectedProduct == null)
-            {
-                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to delete", "ok");
-            }
-            else
-                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Ok", $"Ok", "ok");
-        }
 
             // обраюотка изменения выбранного элемента в CollectionView
             // просто запихуивает выбранный товар в поле selectedProduct

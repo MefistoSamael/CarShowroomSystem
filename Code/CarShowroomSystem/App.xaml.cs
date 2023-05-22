@@ -18,7 +18,7 @@ public partial class App : Microsoft.Maui.Controls.Application
     {
         var windows = base.CreateWindow(activationState);
 
-        windows.Width = 800;
+        windows.Width = 1200;
         windows.Height = 600;
 
         return windows;
