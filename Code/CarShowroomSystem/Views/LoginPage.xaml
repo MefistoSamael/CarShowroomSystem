@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+     Title="LoginPage"
+     x:Class="CarShowroomSystem.Views.LoginPage"
+     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Shell.PresentationMode="NotAnimated"
+    Shell.TabBarIsVisible="false">
+
+<ContentPage.Resources>
+    <ResourceDictionary>
+        <Style x:Key="Prompt" TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="End" />
+        </Style>
+        <Style x:Key="LoginButton" TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="LightGray" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="WidthRequest" Value="125" />
+        </Style>
+    </ResourceDictionary>
+</ContentPage.Resources>
+<VerticalStackLayout>
+    <Grid
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto, Auto"
+            RowSpacing="10">
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="User name" />
+        <Entry
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Placeholder="User name"
+            Text="{Binding LogIn}"
+            WidthRequest="150"   >
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidateLogInCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+            
+         </Entry>
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowLogInErrorMessage}"
+            Text="{Binding LogInErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center"
+            Grid.ColumnSpan="2"/>
+
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalOptions="End"
+            Style="{StaticResource Prompt}"
+            Text="Password" />
+        <Entry
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            IsPassword="True"
+            Placeholder="Password"
+            Text="{Binding Password}"
+            WidthRequest="150" >
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidatePasswordCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowPasswordErrorMessage}"
+            Text="{Binding PasswordErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center"
+            Grid.ColumnSpan="2"/>
+    
+        <Button
+            HorizontalOptions="End"
+            Grid.Row="4"
+            Grid.Column="0"
+            Command="{Binding SubmitCommand}"
+            Style="{StaticResource LoginButton}"
+            IsEnabled="{Binding EnableButton}"
+            Text="Submit" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Command="{Binding CreateAccountCommand}"
+            Style="{StaticResource LoginButton}"
+            Text="Create Account" />
+    </Grid>
+
+
+</VerticalStackLayout>
+</ContentPage>

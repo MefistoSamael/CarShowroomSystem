@@ -1,9 +1,9 @@
-﻿using BusinessLogic.Entities;
-using BusinessLogic.Entities.Products;
-using BusinessLogic.Entities.Users;
+﻿using CarShowroomSystem.Entities;
+using CarShowroomSystem.Entities.Products;
+using CarShowroomSystem.Entities.Users;
 using System.Reflection.Metadata.Ecma335;
 
-namespace BusinessLogic.Application
+namespace CarShowroomSystem.Application
 {
     public interface IDBRequestSystem
     {
@@ -116,7 +116,7 @@ namespace BusinessLogic.Application
 
         public bool AddUser(IUser user)
         {
-            if (!users.Contains(user)) 
+            if (!ContainsUserByLogIn(user.Login)) 
             {
                 users.Add(user);
                 return true;

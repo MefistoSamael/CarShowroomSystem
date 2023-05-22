@@ -19,6 +19,7 @@ public class Order
         CreatorUserName = creatorUserName;
         BuyerFullName = buyerFullName;
         Bucket = bucket;
+        Price = price;
     }
 
     public decimal GetBucketPrice()

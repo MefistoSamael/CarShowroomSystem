@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="CarShowroomSystem.Views.Car.ChangeCarPage"
+             Title="ChangeCarPage">
+
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+          RowSpacing="10">
+
+            <!-- Model -->
+            <Label Grid.Row="0"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Model"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="0"
+               Grid.Column="1"
+               Placeholder="Model"
+               Text="{Binding Model}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Name -->
+            <Label Grid.Row="1"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Name"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="1"
+               Grid.Column="1"
+               Placeholder="Name"
+               Text="{Binding Name}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Manufacturer -->
+            <Label Grid.Row="2"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Manufacturer"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="2"
+               Grid.Column="1"
+               Placeholder="Manufacturer"
+               Text="{Binding Manufacturer}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- PhotoPath -->
+            <Label Grid.Row="3"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="PhotoPath"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="3"
+               Grid.Column="1"
+               Placeholder="PhotoPath"
+               Text="{Binding PhotoPath}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Color -->
+            <Label Grid.Row="4"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Color"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="4"
+               Grid.Column="1"
+               Placeholder="Color"
+               Text="{Binding MyColor}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Power -->
+            <Label Grid.Row="5"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Power"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="5"
+               Grid.Column="1"
+               Placeholder="Power"
+               Text="{Binding Power}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Fuel Consumption -->
+            <Label Grid.Row="6"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Fuel Consumption"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="6"
+               Grid.Column="1"
+               Placeholder="Fuel Consumption"
+               Text="{Binding FuelConsumption}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Fuel Tank Capacity -->
+            <Label Grid.Row="7"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Fuel Tank Capacity"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="7"
+               Grid.Column="1"
+               Placeholder="Fuel Tank Capacity"
+               Text="{Binding FuelTankCapacity}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Price -->
+            <Label Grid.Row="8"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Price"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="8"
+               Grid.Column="1"
+               Placeholder="Price"
+               Text="{Binding Price}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Entry>
+
+            <!-- Engine -->
+            <Label Grid.Row="9"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Engine"
+               HorizontalOptions="Center" />
+            <Picker Grid.Row="9"
+                Grid.Column="1"
+                Title="Select an Engine"
+                x:Name="enginePicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Diesel Engine</x:String>
+                        <x:String>Gasoline Engine</x:String>
+                        <x:String>Electric Motor</x:String>
+                        <x:String>Hybrid Engine</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Gearbox -->
+            <Label Grid.Row="10"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Gearbox"
+               HorizontalOptions="Center" />
+            <Picker Grid.Row="10"
+                Grid.Column="1"
+                Title="Select a Gearbox"
+                x:Name="gearboxPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Manual Transmission</x:String>
+                        <x:String>Automatic Transmission</x:String>
+                        <x:String>Semi-Automatic Transmission</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- WheelDrive -->
+            <Label Grid.Row="11"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="WheelDrive"
+               HorizontalOptions="Center" />
+            <Picker Grid.Row="11"
+                Grid.Column="1"
+                Title="Select a WheelDrive"
+                x:Name="wheelDrivePicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Front-Wheel Drive</x:String>
+                        <x:String>Rear-Wheel Drive</x:String>
+                        <x:String>All-Wheel Drive</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- ManufactureDate -->
+            <Label Grid.Row="12"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Date"
+               HorizontalOptions="Center" />
+            <DatePicker Grid.Row="12"
+                    Grid.Column="1"
+                    x:Name="datePicker"
+                    MinimumDate="01.01.1970"
+                    MaximumDate="01.01.2023">
+            </DatePicker>
+
+            <Label Grid.Row="13"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="In Stock"
+               HorizontalOptions="Center" />
+            <CheckBox Grid.Row="13"
+                  Grid.Column="1"
+                  x:Name="checkBox">
+            </CheckBox>
+
+            <Button Grid.Row="14"
+                Grid.Column="1"
+                Text="Change car"
+                Command="{Binding ChangeCarCommand}"
+                BackgroundColor="Red"
+                WidthRequest="200"
+                HorizontalOptions="Fill" />
+        </Grid>
+    </ScrollView>
+
+
+
+
+</ContentPage>

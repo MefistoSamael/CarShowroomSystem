@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CarShowroomSystem.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CarShowroomSystem"
+    xmlns:views="clr-namespace:CarShowroomSystem.Views"
+    xmlns:car="clr-namespace:CarShowroomSystem.Views.Car"
+    Shell.PresentationMode="NotAnimated"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Shell.PresentationMode="NotAnimated"
+        Title="Login Page"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="login"/>
+    <TabBar>
+        <ShellContent
+            Shell.PresentationMode="NotAnimated"
+            Title="Main Page"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="main"/>
+
+    </TabBar>
+
+
+</Shell>
