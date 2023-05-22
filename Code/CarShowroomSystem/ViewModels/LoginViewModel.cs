@@ -71,7 +71,7 @@ public partial class LoginViewModel
     [RelayCommand]
     private async Task CreateAccount()
     {
-        await Shell.Current.GoToAsync("addcarpage");
+        await Shell.Current.GoToAsync("changecarpage");
         //await Shell.Current.GoToAsync($"createaccount", false);
     }
 

@@ -363,7 +363,9 @@
 
             <DatePicker Grid.Row="24"
                     Grid.Column="1"
-                    x:Name="datePicker">
+                    x:Name="datePicker"
+                    MinimumDate="01.01.1970"
+                    MaximumDate="01.01.2023">
             </DatePicker>
 
             <Label

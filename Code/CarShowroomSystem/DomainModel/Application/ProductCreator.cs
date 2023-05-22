@@ -67,40 +67,39 @@ namespace CarShowroomSystem.Application
             if (model != null) // Проверяем, было ли передано значение для модели
                 car.Model = model; // Присваиваем значение из аргумента метода
 
-            if (engine.HasValue)
+            if ((int)engine != -1)
                 car.Engine = engine.Value;
 
-            if (gearbox.HasValue)
+            if ((int)gearbox != -1)
                 car.Gearbox = gearbox.Value;
 
-            if (fuelTankCapacity.HasValue)
+            if (fuelTankCapacity != null)
                 car.FuelTankCapacity = fuelTankCapacity.Value;
 
-            if (manufactureDate.HasValue)
+            if (manufactureDate != default)
                 car.ManufactureDate = manufactureDate.Value;
 
             if (color != null)
                 car.Color = color;
 
-            if (wheelDrive.HasValue)
+            if ((int)(int)wheelDrive != -1)
                 car.WheelDrive = wheelDrive.Value;
 
-            if (power.HasValue)
+            if (power != null)
                 car.Power = power.Value;
 
-            if (fuelConsumption.HasValue)
+            if (fuelConsumption != null)
                 car.FuelConsumption = fuelConsumption.Value;
 
             if (name != null)
                 car.Name = name;
 
-            if (price.HasValue)
+            if (price != null)
                 car.Price = price.Value;
 
             if (manufacturer != null)
                 car.Manufacturer = manufacturer;
 
-            if (inStock.HasValue)
                 car.InStock = inStock.Value;
 
             if (photoPath != null)

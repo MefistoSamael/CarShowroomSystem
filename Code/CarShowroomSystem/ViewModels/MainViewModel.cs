@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using CarShowroomSystem.Model;
 using CarShowroomSystem.Entities.Products;
 using System.Collections.ObjectModel;
+using CarShowroomSystem.Views.Car;
+using CarShowroomSystem.ViewModels.Car;
+using CarShowroomSystem.Views;
 
 namespace CarShowroomSystem.ViewModels
 {
@@ -61,6 +64,31 @@ namespace CarShowroomSystem.ViewModels
         private async void AddProduct()
         {
             await Shell.Current.GoToAsync("addcarpage");
+
+            // короче, вот вся эта шняга нужна, чтобы нормально работало обновление ObservableCollection после 
+            // изменения его эллемента
+
+            // тут мы получаем страницу ChangeCarPage, чтобы потом с ней взаимодействовать
+            var page = Shell.Current.Navigation.NavigationStack.LastOrDefault() as AddCarPage;
+
+            if (page != null)
+            {
+                // тут происходит какая то многопоточная магия которую написал чат гпт
+
+                var tcs = new TaskCompletionSource<object>();
+
+                // Подписываемся на событие Disappearing второй страницы
+                page.Disappearing += (s, args) =>
+                {
+                    tcs.SetResult(null);
+                };
+
+                // Ожидаем завершения закрытия второй страницы
+                await tcs.Task;
+
+                // самое интересное в этом методе)))))
+                RefrechObservableCollection();
+            }
         }
 
         // открывает страницу на которой пользователь сможет изменить конкретный товар
@@ -72,11 +100,47 @@ namespace CarShowroomSystem.ViewModels
                 await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to delete", "ok");
             }
             else
-                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Ok", $"Ok", "ok");
+            {
+                if (selectedProduct is Entities.Products.Car)
+                {
+                    var navigationParameter = new Dictionary<string, object>() { { "Car", selectedProduct } };
+                    await Shell.Current.GoToAsync("changecarpage", navigationParameter);
+
+                    // короче, вот вся эта шняга нужна, чтобы нормально работало обновление ObservableCollection после 
+                    // изменения его эллемента
+
+                    // тут мы получаем страницу ChangeCarPage, чтобы потом с ней взаимодействовать
+                    var page = Shell.Current.Navigation.NavigationStack.LastOrDefault() as ChangeCarPage;
+
+                    if (page != null)
+                    {
+                        // тут происходит какая то многопоточная магия которую написал чат гпт
+
+                        var tcs = new TaskCompletionSource<object>();
+
+                        // Подписываемся на событие Disappearing второй страницы
+                        page.Disappearing += (s, args) =>
+                        {
+                            tcs.SetResult(null);
+                        };
+
+                        // Ожидаем завершения закрытия второй страницы
+                        await tcs.Task;
+
+                        // самое интересное в этом методе)))))
+                        RefrechObservableCollection();
+
+
+                    }
+
+                }
+
+            }
+
         }
 
-        // удаляет товар. ЧТобы удалить товар надо его выбрать
-        [RelayCommand]
+            // удаляет товар. ЧТобы удалить товар надо его выбрать
+            [RelayCommand]
         private async void DeleteProduct()
         {
             // проверко на то, что выбранный товар не null
@@ -89,15 +153,9 @@ namespace CarShowroomSystem.ViewModels
                 // удаляем товар из бд
                 model.DeleteProduct(selectedProduct.Id);
 
-                // получаем все товары в бд
-                var products = model.GetAllProducts();
+                
+                RefrechObservableCollection();
 
-                //чистим ObservableCollection
-                Products.Clear();
-                // переносим все товары из списка из БД в
-                // ObservableCollection 
-                foreach ( var product in products ) 
-                    Products.Add( product );
             }
 
         }
@@ -125,6 +183,38 @@ namespace CarShowroomSystem.ViewModels
         private void HandleSelectionChanged(object SelectedItem)
         {
             selectedProduct = SelectedItem as Product;
+        }
+
+        // обновляет коллекцию всех товаров
+        private async void RefrechObservableCollection()
+        {
+            // получаем все товары в бд
+            var products = model.GetAllProducts();
+
+            //чистим ObservableCollection
+            Products.Clear();
+            // переносим все товары из списка из БД в
+            // ObservableCollection 
+            foreach (var product in products)
+            {
+                // у любого нормального человека может возникуть вопрос:
+                // - а на..., то есть зачем оно надо?
+                // а я отвечу:
+                // - вообще не вкуриваю. Я сделал клац клац по клавиатуре
+                // и оно заработало
+
+                // Короче говоря, без этой штуки при вызове из метода ChangeProduct или AddProduct
+                // ничего не обновляется((((
+                // Больше скажу - если значение 100 замнеить на 50 оно тоже не об-
+                // новляется)))0 
+                // АСИНХРОННОЕ ПРОГРАММИРОВАНИЕ - ВО 👍
+                await Task.Run(() => Thread.Sleep(100));
+                Products.Add(product);
+            }
+
+
+
+
         }
     }
 }

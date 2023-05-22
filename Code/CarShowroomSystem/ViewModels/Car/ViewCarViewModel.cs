@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using CarShowroomSystem.Model;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace CarShowroomSystem.ViewModels.Car
 {
-    internal class ViewCarViewModel
+    [ObservableObject]
+    public partial class ViewCarViewModel
     {
+        IModel bm;
     }
 }
