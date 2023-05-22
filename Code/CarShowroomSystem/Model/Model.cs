@@ -24,7 +24,7 @@ namespace CarShowroomSystem.Model
         public IUser? currentUser;
         public Model()
         {
-            dBRequestSystem = new TopDB();
+            dBRequestSystem = new TopDB();//закомментить это и поставить своб бд
             userControlSystem = new UserControlSystem();
             customerRequestHandler = new CustomerRequestHandler();
             orderHandleSystem = new OrderHandleSystem();

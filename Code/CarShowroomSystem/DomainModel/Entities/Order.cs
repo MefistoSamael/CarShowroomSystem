@@ -1,6 +1,6 @@
 ﻿namespace CarShowroomSystem.Entities;
-
-public class Order
+using Microsoft.EntityFrameworkCore;
+public class Order : DbContext
 {
     public enum OrderState { Completed, Returned }
 

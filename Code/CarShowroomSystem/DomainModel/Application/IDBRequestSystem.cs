@@ -35,6 +35,18 @@ namespace CarShowroomSystem.Application
         public bool ChangeTiresInfo(Guid id, Tires tires);
     }
 
+
+   
+
+
+
+
+
+
+
+
+
+
     public class TopDB : IDBRequestSystem
     {
         List<Order> orders;
