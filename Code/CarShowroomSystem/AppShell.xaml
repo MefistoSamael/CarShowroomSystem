@@ -15,6 +15,7 @@
         Title="Login Page"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="login"/>
+
     <TabBar>
         <Tab Title="Product">
             <ShellContent
@@ -36,7 +37,6 @@
                 ContentTemplate="{DataTemplate user:AddUserPage}"/>-->
 
         </Tab>
-
     </TabBar>
 
 
