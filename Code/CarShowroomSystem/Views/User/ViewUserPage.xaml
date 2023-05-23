@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarShowroomSystem.Views.User.ViewUserPage"
+             Title="ViewUserPage">
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              RowSpacing="10">
+            <!-- Login -->
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Style="{StaticResource Prompt}"
+                   Text="Login"
+                   HorizontalOptions="Center" />
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Text="{Binding Login}"
+                   WidthRequest="150"
+                   HorizontalOptions="Start" />
+
+            <!-- Password -->
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{StaticResource Prompt}"
+                   Text="Password"
+                   HorizontalOptions="Center" />
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{Binding Password}"
+                   WidthRequest="150"
+                   HorizontalOptions="Start" />
+
+            <!-- FullName -->
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Style="{StaticResource Prompt}"
+                   Text="FullName"
+                   HorizontalOptions="Center" />
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Text="{Binding FullName}"
+                   WidthRequest="150"
+                   HorizontalOptions="Start" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

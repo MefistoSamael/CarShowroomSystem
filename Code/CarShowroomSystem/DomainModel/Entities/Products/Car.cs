@@ -14,6 +14,14 @@ namespace CarShowroomSystem.Entities.Products
         Chevrolet_Camaro,
     }
 
+    public enum CarColor
+    {
+        Red,
+        Blue,
+        Green,
+        Yellow,
+    }
+
     public enum EngineType
     {
         Diesel_Engine,
@@ -29,13 +37,7 @@ namespace CarShowroomSystem.Entities.Products
         SemiAutomatic_Transmission
     }
 
-    public enum CarColor
-    {
-        Red,
-        Blue,
-        Green,
-        Yellow,
-    }
+
 
     public enum WheelDriveType
     {

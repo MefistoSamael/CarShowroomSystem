@@ -11,10 +11,5 @@ public partial class MainPage : ContentPage
         BindingContext = vm;
         InitializeComponent();
     }
-
-    private async void OnCounterClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
-    }
 }
 

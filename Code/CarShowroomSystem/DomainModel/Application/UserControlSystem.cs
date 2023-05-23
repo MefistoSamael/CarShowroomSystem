@@ -84,6 +84,9 @@ namespace CarShowroomSystem.Application
         // устанавливает поле currentUser в CustomerRequestHandler
         public bool LogIn(string login, string password) 
         {
+            // шоб если еще входили в аккаунт и не вышли (дурачки)
+            // все норм работало
+            customerRequestHandler!.CurrentUser = null;
             ConnectionCheck();
 
             // получаем пользователя

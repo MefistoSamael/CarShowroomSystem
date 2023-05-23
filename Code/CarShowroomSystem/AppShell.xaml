@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:CarShowroomSystem"
     xmlns:views="clr-namespace:CarShowroomSystem.Views"
     xmlns:car="clr-namespace:CarShowroomSystem.Views.Car"
+    xmlns:user="clr-namespace:CarShowroomSystem.Views.User"
     Shell.PresentationMode="NotAnimated"
     Shell.FlyoutBehavior="Disabled">
 
@@ -15,11 +16,26 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="login"/>
     <TabBar>
-        <ShellContent
+        <Tab Title="Product">
+            <ShellContent
             Shell.PresentationMode="NotAnimated"
             Title="Main Page"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="main"/>
+        </Tab>
+        <Tab x:Name="AddUserTab"
+            Title="Users">
+            <ShellContent
+                Shell.PresentationMode="NotAnimated"
+                Title="All User Page"
+                ContentTemplate="{DataTemplate user:AllUserPage}"
+                Route="usermain"/>
+            <!--<ShellContent
+                Shell.PresentationMode="NotAnimated"
+                Title="Add User Page"
+                ContentTemplate="{DataTemplate user:AddUserPage}"/>-->
+
+        </Tab>
 
     </TabBar>
 

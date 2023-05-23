@@ -50,6 +50,11 @@ namespace CarShowroomSystem.Model
             Demonstration();
         }
 
+        public IUser? GetCurrentUser()
+        {
+            return currentUser;
+        }
+
         public void LogOut()
         {
             userControlSystem.LogOut();

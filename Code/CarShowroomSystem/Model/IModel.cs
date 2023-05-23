@@ -11,6 +11,7 @@ namespace CarShowroomSystem.Model
 {
     public interface IModel
     {
+
         public IUser? AddUser(string Login, string password, Roles role, string fullName);
 
         public IUser? SignIn(string login, string password);
@@ -18,6 +19,8 @@ namespace CarShowroomSystem.Model
         public void LogOut();
 
         public IUser? SwitchUser(string Login, string password);
+
+        public IUser? GetCurrentUser();
 
 
 

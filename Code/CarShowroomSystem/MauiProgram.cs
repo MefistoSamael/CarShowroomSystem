@@ -2,9 +2,13 @@
 using Microsoft.Extensions.Logging;
 using CarShowroomSystem.Model;
 using CarShowroomSystem.ViewModels;
+using CarShowroomSystem.ViewModels.User;
 using CarShowroomSystem.Views;
 using CarShowroomSystem.Views.Car;
 using CarShowroomSystem.ViewModels.Car;
+using CarShowroomSystem.Views.User;
+
+
 
 namespace CarShowroomSystem;
 
@@ -33,6 +37,10 @@ public static class MauiProgram
         builder.Services.AddTransient<ChangeCarViewModel>();
         builder.Services.AddTransient<ViewCarViewModel>();
         builder.Services.AddTransient<AddUserViewModel>();
+        builder.Services.AddTransient<ChangeUserViewModel>();
+        builder.Services.AddTransient<ViewUserViewModel>();
+        builder.Services.AddTransient<AllUserViewModel>();
+
 
         //pages
         builder.Services.AddTransient<CreateAccountPage>();
@@ -42,6 +50,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ChangeCarPage>();
         builder.Services.AddTransient<ViewCarPage>();
         builder.Services.AddTransient<AddUserPage>();
+        builder.Services.AddTransient<ChangeUserPage>();
+        builder.Services.AddTransient<ViewUserPage>();
+        builder.Services.AddTransient<AllUserPage>();
 
         //model
         builder.Services.AddSingleton<IModel, Model.Model>();
