@@ -17,6 +17,7 @@ public partial class MainPage : ContentPage
         //var customers = _dbContext.Customers.ToList();
 
     }
+
     protected override void OnDisappearing()
     {
         base.OnDisappearing();

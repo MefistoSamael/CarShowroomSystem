@@ -8,5 +8,12 @@ public partial class ChangeCarPage : ContentPage
 	{
 		BindingContext = vm;
 		InitializeComponent();
-	}
+
+        // добавл€ем обработчик выбора типа двигател€
+        enginePicker.SelectedIndexChanged += vm.HandleSelectedIndexChangedEngine;
+        gearboxPicker.SelectedIndexChanged += vm.HandleSelectedIndexChangedGearBox;
+        wheelDrivePicker.SelectedIndexChanged += vm.HandleSelectedIndexChangedWheelDrive;
+        datePicker.DateSelected += vm.HandleSelectedIndexChangedDateTime;
+        checkBox.CheckedChanged += vm.HandleCheckedChanged;
+    }
 }

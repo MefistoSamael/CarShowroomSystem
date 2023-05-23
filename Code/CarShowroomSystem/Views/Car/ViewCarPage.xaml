@@ -3,10 +3,193 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarShowroomSystem.Views.Car.ViewCarPage"
              Title="ViewCarPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+          RowSpacing="10">
+
+            <!-- Model -->
+            <Label Grid.Row="0"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Model"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="0"
+               Grid.Column="1"
+               Text="{Binding Model}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Name -->
+            <Label Grid.Row="1"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Name"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="{Binding Name}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Manufacturer -->
+            <Label Grid.Row="2"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Manufacturer"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="2"
+               Grid.Column="1"
+               Text="{Binding Manufacturer}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- PhotoPath -->
+            <Label Grid.Row="3"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="PhotoPath"
+               HorizontalOptions="Center" />
+            <Image Grid.Row="3"
+               Grid.Column="1"
+               Source="{Binding PhotoPath}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Image>
+
+            <!-- Color -->
+            <Label Grid.Row="4"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Color"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="4"
+               Grid.Column="1"
+               Text="{Binding MyColor}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Power -->
+            <Label Grid.Row="5"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Power"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="5"
+               Grid.Column="1"
+               Text="{Binding Power}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Fuel Consumption -->
+            <Label Grid.Row="6"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Fuel Consumption"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="6"
+               Grid.Column="1"
+               Text="{Binding FuelConsumption}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Fuel Tank Capacity -->
+            <Label Grid.Row="7"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Fuel Tank Capacity"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="7"
+               Grid.Column="1"
+               Text="{Binding FuelTankCapacity}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Price -->
+            <Label Grid.Row="8"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Price"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="8"
+               Grid.Column="1"
+               Text="{Binding Price}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Engine -->
+            <Label Grid.Row="9"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Engine"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="9"
+               Grid.Column="1"
+               Text="{Binding Engine}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- Gearbox -->
+            <Label Grid.Row="10"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Gearbox"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="10"
+               Grid.Column="1"
+               Text="{Binding Gearbox}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- WheelDrive -->
+            <Label Grid.Row="11"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="WheelDrive"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="11"
+               Grid.Column="1"
+               Text="{Binding WheelDrive}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <!-- ManufactureDate -->
+            <Label Grid.Row="12"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Date"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="12"
+               Grid.Column="1"
+               Text="{Binding ManufactureDate}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+            <Label Grid.Row="13"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="In Stock"
+               HorizontalOptions="Center" />
+            <Label Grid.Row="13"
+               Grid.Column="1"
+               Text="{Binding IsInStock}"
+               WidthRequest="150"
+               HorizontalOptions="Start">
+            </Label>
+
+        </Grid>
+    </ScrollView>
 </ContentPage>

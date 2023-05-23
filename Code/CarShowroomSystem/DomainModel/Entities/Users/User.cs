@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 public enum Roles
 {
-    customer = 1,
-    seller = 2,
-    admin = 3
+    customer =0,
+    seller = 1,
+    admin = 2,
 }
 
 namespace CarShowroomSystem.Entities.Users

@@ -18,11 +18,6 @@ namespace CarShowroomSystem.ViewModels
     [ObservableObject]
     public partial class MainViewModel : IQueryAttributable
     {
-        // нынешний пользователь.
-        // - Зачем?
-        // - хз
-        private IUser currentUser;
-
         // модель, для вызова методов предметной области
         private IModel model;
 
@@ -46,15 +41,21 @@ namespace CarShowroomSystem.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             // получаем пользователя из переданного словаря 
-            currentUser = query["User"] as IUser;
+            IUser currentUser = query["User"] as IUser;
             // устанавливаем поле, отвечающее за отображение команд админа
             IsAdmin = currentUser.Role == Roles.admin;
+
+            // получаем по имени объект Tab, отвечающий за вкладку работы с пользователями, в AppShell, 
+            var tab = Shell.Current.FindByName("AddUserTab") as Tab;
+            // и устанавливаем видимость панели работы с пользователем в соответствии с ролью пользователя
+            tab.IsVisible = IsAdmin;
         }
 
         // нажатие на кнопку с напдписью Exit
         [RelayCommand]
         private async void Exit()
         {
+            model.LogOut();
             //возвращает на страницу входа в аккаунт
             await Shell.Current.GoToAsync("//login", false);
         }
@@ -139,8 +140,25 @@ namespace CarShowroomSystem.ViewModels
 
         }
 
-            // удаляет товар. ЧТобы удалить товар надо его выбрать
-            [RelayCommand]
+
+        // вызывает страницу, на которой отображается 
+        // подробная информация о товаре
+        [RelayCommand]
+        private async void ViewProduct()
+        {
+            if (selectedProduct == null)
+            {
+                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to show", "ok");
+            }
+            else
+            {
+                var navigationParameter = new Dictionary<string, object>() { { "Car", selectedProduct } };
+                await Shell.Current.GoToAsync("viewcarpage", navigationParameter);
+            }
+        }
+
+        // удаляет товар. ЧТобы удалить товар надо его выбрать
+        [RelayCommand]
         private async void DeleteProduct()
         {
             // проверко на то, что выбранный товар не null
@@ -160,25 +178,13 @@ namespace CarShowroomSystem.ViewModels
 
         }
 
-        // вызывает страницу, на которой отображается 
-        // подробная информация о товаре
-        [RelayCommand]
-        private async void ViewProduct()
-        {
-            if (selectedProduct == null)
-            {
-                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which item to delete", "ok");
-            }
-            else
-                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Ok", $"Ok", "ok");
-        }
 
             // обраюотка изменения выбранного элемента в CollectionView
             // просто запихуивает выбранный товар в поле selectedProduct
             // оно нужно для действий по добавлению и удалению товара
             //
             // почему я не сделал вызова свойств SelectedItem у CollectionView на прямую?
-            // потому что я не знаю как его получить из кода
+            // потому что я не знаю как его получить из кода ViewModel по-другому
             [RelayCommand]
         private void HandleSelectionChanged(object SelectedItem)
         {

@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Shell.PresentationMode="NotAnimated"
-             x:Class="CarShowroomSystem.Views.MainPage">
+             x:Class="CarShowroomSystem.Views.User.AllUserPage"
+             Title="AllUserPage">
 
     <!--кнопка для выхода из аккаунта-->
     <Shell.TitleView>
@@ -11,10 +11,10 @@
             <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
-    
+
     <HorizontalStackLayout>
         <CollectionView 
-            ItemsSource="{Binding Products}"
+            ItemsSource="{Binding Users}"
             WidthRequest="500"
             x:Name="FriendsList"
             SelectionMode="Single"
@@ -31,55 +31,49 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.RowSpan="2"
-                           Source="{Binding PhotoPath}"
-                           Aspect="AspectFill"
-                           HeightRequest="100"
-                           WidthRequest="100" />
                         <Label Grid.Column="1"
-                           Text="{Binding Name}"
+                           Text="{Binding Login}"
                            FontAttributes="Bold" />
                         <Label Grid.Row="1"
                            Grid.Column="1"
-                           Text="{Binding Price}"
+                           Text="{Binding FullName}"
                            FontAttributes="Italic"
                            VerticalOptions="End" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button 
-            Text="AddProduct"
-            Command ="{Binding AddProductCommand}"
-            BackgroundColor="Red"  
-            WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}"/>
-        <Button
-            Text="ChangeProduct"
-            Command ="{Binding ChangeProductCommand}"
-            BackgroundColor="Red"
-            WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}"/>
 
         <Button 
-            Text="DeleteProduct"
-            Command ="{Binding DeleteProductCommand}"
+            Text="Delete User"
+            Command ="{Binding DeleteUserCommand}"
             BackgroundColor="Red"
             WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}">
+            HorizontalOptions="Fill">
         </Button>
-        
+
         <Button 
-            Text="ViewProduct"
-            Command ="{Binding ViewProductCommand}"
+            Text="View User"
+            Command ="{Binding ViewUserCommand}"
+            BackgroundColor="Red"  
+            WidthRequest="200"
+            HorizontalOptions="Fill"/>
+
+        <Button 
+            Text="Change User"
+            Command ="{Binding ChangeUserCommand}"
+            BackgroundColor="Red"  
+            WidthRequest="200"
+            HorizontalOptions="Fill"/>
+
+        <Button 
+            Text="Change User"
+            Command ="{Binding AddUserCommand}"
             BackgroundColor="Red"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 
 
-    </HorizontalStackLayout>
 
+    </HorizontalStackLayout>
 </ContentPage>

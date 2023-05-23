@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="CarShowroomSystem.Views.User.AddUserPage"
+             Title="AddUserPage">
+    
+    <ScrollView>
+        <Grid
+        ColumnDefinitions="*,*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+            <!--Login-->
+            <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="Login"
+            HorizontalOptions="Center" />
+            <Entry
+            Grid.Row="0"
+            Grid.Column="1"
+            Placeholder="Login"
+            Text="{Binding Login}"
+            WidthRequest="150"
+            HorizontalOptions="Start">
+                <Entry.Behaviors>
+                    <behaviors:UserStoppedTypingBehavior
+                    Command="{Binding ValidateLoginCommand}"
+                    StoppedTypingTimeThreshold="500" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowLoginErrorMessage}"
+            Text="{Binding LoginErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center" />
+
+            <!--Password-->
+            <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="Password"
+            HorizontalOptions="Center" />
+            <Entry
+            Grid.Row="2"
+            Grid.Column="1"
+            Placeholder="Password"
+            Text="{Binding Password}"
+            WidthRequest="150"
+            HorizontalOptions="Start">
+                <Entry.Behaviors>
+                    <behaviors:UserStoppedTypingBehavior
+                    Command="{Binding ValidatePasswordCommand}"
+                    StoppedTypingTimeThreshold="500" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowPasswordErrorMessage}"
+            Text="{Binding PasswordErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center" />
+
+            <!--FullName-->
+            <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="FullName"
+            HorizontalOptions="Center" />
+            <Entry
+            Grid.Row="4"
+            Grid.Column="1"
+            Placeholder="FullName"
+            Text="{Binding FullName}"
+            WidthRequest="150"
+            HorizontalOptions="Start">
+                <Entry.Behaviors>
+                    <behaviors:UserStoppedTypingBehavior
+                    Command="{Binding ValidateFullNameCommand}"
+                    StoppedTypingTimeThreshold="500" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label
+            Grid.Row="5"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowFullNameErrorMessage}"
+            Text="{Binding FullNameErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center" />
+
+            <!--Roles-->
+            <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource Prompt}"
+            Text="Roles"
+            HorizontalOptions="Center" />
+            <Picker
+            Grid.Row="6"
+            Grid.Column="1"
+            Title="Select a Role"
+            x:Name="rolePicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Customer</x:String>
+                        <x:String>Seller</x:String>
+                        <x:String>Admin</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label
+            Grid.Row="7"
+            Grid.Column="1"
+            FontSize="13"
+            IsVisible="{Binding ShowRoleErrorMessage}"
+            Text="{Binding RoleErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center" />
+
+
+            <Button
+            Grid.Row="8"
+            Grid.Column="1"
+            Text="Save User"
+            Command="{Binding SaveUserCommand}"
+            BackgroundColor="Red"
+            WidthRequest="200"
+            HorizontalOptions="Fill"
+            IsEnabled="{Binding EnableButton}" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

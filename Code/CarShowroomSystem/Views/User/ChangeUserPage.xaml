@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarShowroomSystem.Views.User.ChangeUserPage"
+             Title="ChangeUserPage">
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+            <!-- Login -->
+            <Label Grid.Row="0"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Login"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="0"
+               Grid.Column="1"
+               Placeholder="Login"
+               Text="{Binding Login}"
+               WidthRequest="150"
+               HorizontalOptions="Start" />
+
+            <!-- Password -->
+            <Label Grid.Row="1"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Password"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="1"
+               Grid.Column="1"
+               Placeholder="Password"
+               Text="{Binding Password}"
+               WidthRequest="150"
+               HorizontalOptions="Start" />
+
+            <!-- FullName -->
+            <Label Grid.Row="2"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="FullName"
+               HorizontalOptions="Center" />
+            <Entry Grid.Row="2"
+               Grid.Column="1"
+               Placeholder="FullName"
+               Text="{Binding FullName}"
+               WidthRequest="150"
+               HorizontalOptions="Start" />
+
+            <!-- Roles --><!--
+            <Label Grid.Row="3"
+               Grid.Column="0"
+               Style="{StaticResource Prompt}"
+               Text="Roles"
+               HorizontalOptions="Center" />
+            <Picker Grid.Row="3"
+                Grid.Column="1"
+                Title="Select a Role"
+                x:Name="rolePicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Customer</x:String>
+                        <x:String>Seller</x:String>
+                        <x:String>Admin</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>-->
+
+            <Button Grid.Row="3"
+                Grid.Column="1"
+                Text="Save User"
+                Command="{Binding ChangeUserCommand}"
+                BackgroundColor="Red"
+                WidthRequest="200"
+                HorizontalOptions="Fill" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
