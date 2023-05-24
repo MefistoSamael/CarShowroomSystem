@@ -43,19 +43,19 @@
         <Button 
             Text="Delete Product"
             Command ="{Binding DeleteProductCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
         <Button 
             Text="Change count of Product"
             Command ="{Binding ChangeCountCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
         <Button 
             Text="Create order"
             Command ="{Binding CreateOrderCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 

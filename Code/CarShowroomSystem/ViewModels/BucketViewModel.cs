@@ -77,6 +77,12 @@ namespace CarShowroomSystem.ViewModels
             {
                 // предлагаем пользвоателю ввести количество товара
                 string result = await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayPromptAsync("Buy", "How many items do you want to buy?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+
+                if (result == null || result == "")
+                {
+                    await Shell.Current.DisplayAlert("Error", "Enter items amount", "ok");
+                    return;
+                }
                 int count = 0;
                 // смотрим, дурак ли пользователь(правильно ли он ввел число)
                 try
@@ -135,6 +141,11 @@ namespace CarShowroomSystem.ViewModels
             else
                 buyerFullName = model.GetCurrentUser().FullName;
 
+            if (buyerFullName == null || buyerFullName == "")
+            {
+                await Shell.Current.DisplayAlert("Error", "Enter buyer Full Name", "ok");
+                return;
+            }
             model.CreateOrder(buyerFullName);
             RefrechObservableCollection();
         }

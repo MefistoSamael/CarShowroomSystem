@@ -59,6 +59,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AllUserPage>();
         builder.Services.AddTransient<BucketPage>();
         builder.Services.AddTransient<OrderPage>();
+        builder.Services.AddTransient<ViewOrderPage>();
         builder.Services.AddTransient<AllOrderPage>();
 
         //model

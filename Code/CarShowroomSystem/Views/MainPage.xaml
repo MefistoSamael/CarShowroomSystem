@@ -9,7 +9,7 @@
     <Shell.TitleView>
         <Grid ColumnDefinitions="9*,1*">
             <Label x:Name="title" HorizontalOptions="Start" Grid.Column="0" VerticalTextAlignment="Center"/>
-            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
+            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="MediumPurple" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
     
@@ -52,14 +52,14 @@
         <Button 
             Text="Add Product"
             Command ="{Binding AddProductCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsVisible="{Binding IsAdmin}"/>
         <Button
             Text="Change Product"
             Command ="{Binding ChangeProductCommand}"
-            BackgroundColor="Red"
+            BackgroundColor="MediumPurple"
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsVisible="{Binding IsAdmin}"/>
@@ -67,7 +67,7 @@
         <Button 
             Text="Delete Product"
             Command ="{Binding DeleteProductCommand}"
-            BackgroundColor="Red"
+            BackgroundColor="MediumPurple"
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsVisible="{Binding IsAdmin}">
@@ -76,14 +76,14 @@
         <Button 
             Text="View Product"
             Command ="{Binding ViewProductCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 
         <Button 
             Text="Buy Product"
             Command ="{Binding BuyProductCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 

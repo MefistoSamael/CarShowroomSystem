@@ -7,7 +7,7 @@
     <Shell.TitleView>
         <Grid ColumnDefinitions="9*,1*">
             <Label x:Name="title" HorizontalOptions="Start" Grid.Column="0" VerticalTextAlignment="Center"/>
-            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
+            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="MediumPurple" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
 
@@ -73,15 +73,15 @@
         <!--<Button
             Text="Change Order"
             Command ="{Binding ChangeOrderCommand}"
-            BackgroundColor="Red"
+            BackgroundColor="MediumPurple"
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsVisible="{Binding IsAdmin}"/>-->
 
         <Button 
-            Text="View order"
+            Text="View order    "
             Command ="{Binding ViewOrderCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
     </HorizontalStackLayout>

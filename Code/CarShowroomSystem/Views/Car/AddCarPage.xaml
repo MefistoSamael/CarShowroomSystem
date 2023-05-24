@@ -35,7 +35,7 @@
     FontSize="13"
     IsVisible="{Binding ShowModelErrorMessage}"
     Text="{Binding ModelErrorMessage}"
-    TextColor="Red"
+    TextColor="MediumPurple"
     HorizontalOptions="Center" />
 
             <!--Name-->
@@ -62,7 +62,7 @@
     FontSize="13"
     IsVisible="{Binding ShowNameErrorMessage}"
     Text="{Binding NameErrorMessage}"
-    TextColor="Red"
+    TextColor="MediumPurple"
     HorizontalOptions="Center" />
 
             <!--Manufacturer-->
@@ -89,7 +89,7 @@
     FontSize="13"
     IsVisible="{Binding ShowManufacturerErrorMessage}"
     Text="{Binding ManufacturerErrorMessage}"
-    TextColor="Red"
+    TextColor="MediumPurple"
     HorizontalOptions="Center" />
 
             <!--PhotoPath-->
@@ -116,7 +116,7 @@
     FontSize="13"
     IsVisible="{Binding ShowPhotoPathErrorMessage}"
     Text="{Binding PhotoPathErrorMessage}"
-    TextColor="Red"
+    TextColor="MediumPurple"
     HorizontalOptions="Center" />
 
             <!--Color-->
@@ -143,7 +143,7 @@
                 FontSize="13"
                 IsVisible="{Binding ShowMyColorErrorMessage}"
                 Text="{Binding MyColorErrorMessage}"
-                TextColor="Red"
+                TextColor="MediumPurple"
                 HorizontalOptions="Center" />
 
             <!-- Power -->
@@ -170,7 +170,7 @@
         FontSize="13"
         IsVisible="{Binding ShowPowerErrorMessage}"
         Text="{Binding PowerErrorMessage}"
-        TextColor="Red"
+        TextColor="MediumPurple"
         HorizontalOptions="Center"
         Grid.ColumnSpan="2" />
 
@@ -199,7 +199,7 @@
         FontSize="13"
         IsVisible="{Binding ShowFuelConsumptionErrorMessage}"
         Text="{Binding FuelConsumptionErrorMessage}"
-        TextColor="Red"
+        TextColor="MediumPurple"
         HorizontalOptions="Center"
         Grid.ColumnSpan="2" />
 
@@ -227,7 +227,7 @@
         FontSize="13"
         IsVisible="{Binding ShowFuelTankCapacityErrorMessage}"
         Text="{Binding FuelTankCapacityErrorMessage}"
-        TextColor="Red"
+        TextColor="MediumPurple"
         HorizontalOptions="Center"
         Grid.ColumnSpan="2" />
 
@@ -255,7 +255,7 @@
                 FontSize="13"
                 IsVisible="{Binding ShowPriceErrorMessage}"
                 Text="{Binding PriceErrorMessage}"
-                TextColor="Red"
+                TextColor="MediumPurple"
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2" />
 
@@ -285,7 +285,7 @@
                 FontSize="13"
                 IsVisible="{Binding ShowEngineTypeErrorMessage}"
                 Text="{Binding EngineTypeErrorMessage}"
-                TextColor="Red"
+                TextColor="MediumPurple"
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2" />
 
@@ -316,7 +316,7 @@
                 FontSize="13"
                 IsVisible="{Binding ShowGeraboxTypeErrorMessage}"
                 Text="{Binding GeraboxTypeErrorMessage}"
-                TextColor="Red"
+                TextColor="MediumPurple"
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2" />
             
@@ -337,9 +337,9 @@
                 x:Name="wheelDrivePicker">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Manual Transmission</x:String>
-                        <x:String>Automatic Transmission</x:String>
-                        <x:String>SemiAutomatic Transmission</x:String>
+                        <x:String>Front_Wheel_Drive</x:String>
+                        <x:String>Rear_Wheel_Drive</x:String>
+                        <x:String>All_Wheel_Drive_AWD</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
@@ -349,11 +349,11 @@
                 FontSize="13"
                 IsVisible="{Binding ShowWheelDriveTypeErrorMessage}"
                 Text="{Binding WheelDriveTypeErrorMessage}"
-                TextColor="Red"
+                TextColor="MediumPurple"
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2" />
 
-            <!--ManufactureDate-->
+            <!--ManufactuMediumPurpleate-->
             <Label
                 Grid.Row="24"
                 Grid.Column="0"
@@ -384,7 +384,7 @@
                 Grid.Column="1"
             Text="Create car"
             Command ="{Binding CreateCarCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsEnabled="{Binding EnableButton}"/>

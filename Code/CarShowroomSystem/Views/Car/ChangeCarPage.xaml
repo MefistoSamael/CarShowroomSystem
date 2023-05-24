@@ -194,7 +194,7 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <!-- ManufactureDate -->
+            <!-- ManufactuMediumPurpleate -->
             <Label Grid.Row="12"
                Grid.Column="0"
                Style="{StaticResource Prompt}"
@@ -221,7 +221,7 @@
                 Grid.Column="1"
                 Text="Change car"
                 Command="{Binding ChangeCarCommand}"
-                BackgroundColor="Red"
+                BackgroundColor="MediumPurple"
                 WidthRequest="200"
                 HorizontalOptions="Fill" />
         </Grid>

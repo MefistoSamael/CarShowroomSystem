@@ -41,7 +41,7 @@ namespace CarShowroomSystem.ViewModels.Car
 
         private WheelDriveType wheelDriveType = (WheelDriveType)(-1);
 
-        private DateTime manufactureDate;
+        private DateTime manufactuMediumPurpleate;
 
         [ObservableProperty] private bool inStock = true;
 
@@ -73,12 +73,12 @@ namespace CarShowroomSystem.ViewModels.Car
             wheelDriveType = (WheelDriveType)picker.SelectedIndex;
         }
 
-        //устанавливает manufactureDate при выборе даты
+        //устанавливает manufactuMediumPurpleate при выборе даты
         public void HandleSelectedIndexChangedDateTime(object sender, EventArgs e)
         {
             var picker = sender as DatePicker;
 
-            manufactureDate = picker.Date;
+            manufactuMediumPurpleate = picker.Date;
         }
 
         public void HandleCheckedChanged(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace CarShowroomSystem.ViewModels.Car
                 // надо, потому что от пустой строки нельзя произвести преобразование в численному
                 // типу
                 (FuelTankCapacity != null) && (FuelTankCapacity != "") ? (float)Convert.ToDouble(FuelTankCapacity) : null,  
-                manufactureDate,
+                manufactuMediumPurpleate,
                 MyColor,
                 wheelDriveType,
                 (Power != null) && (Power != "") ? (float)Convert.ToDouble(Power) : null, 

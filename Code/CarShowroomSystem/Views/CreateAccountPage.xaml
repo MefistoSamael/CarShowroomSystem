@@ -22,7 +22,7 @@
             FontSize="13"
             IsVisible="{Binding ShowNameErrorMessage}"
             Text="{Binding NameErrorMessage}"
-            TextColor="Red" />
+            TextColor="MediumPurple" />
 
         
         <Entry
@@ -38,7 +38,7 @@
             FontSize="13"
             Text="{Binding FullNameErrorMessage}"
             IsVisible="{Binding ShowFullNameErrorMessage}"
-            TextColor="Red" />
+            TextColor="MediumPurple" />
 
 
 
@@ -58,7 +58,7 @@
             FontSize="13"
             IsVisible="{Binding ShowPasswordErrorMessage}"
             Text="{Binding PasswordErrorMessage}"
-            TextColor="Red" />
+            TextColor="MediumPurple" />
         
         <Button
             Margin="0,30,0,0"

@@ -38,7 +38,7 @@ namespace CarShowroomSystem.ViewModels.Order
             // если заказ вернули его еще раз вернуть нельзя
             if (selectedOrder.State == Entities.Order.OrderState.Returned)
             {
-                await Shell.Current.DisplayAlert("Warning", "This order alredy returned", "ok");
+                await Shell.Current.DisplayAlert("Warning", "This order alMediumPurpley returned", "ok");
                 return;
             }
 

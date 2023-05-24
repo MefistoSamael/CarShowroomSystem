@@ -16,7 +16,7 @@ namespace CarShowroomSystem.Entities.Products
 
     public enum CarColor
     {
-        Red,
+        MediumPurple,
         Blue,
         Green,
         Yellow,
@@ -57,7 +57,7 @@ namespace CarShowroomSystem.Entities.Products
 
         public float FuelTankCapacity { get; set; }
 
-        public DateTime ManufactureDate { get; set; }
+        public DateTime ManufactuMediumPurpleate { get; set; }
 
         public string Color { get; set; }
 

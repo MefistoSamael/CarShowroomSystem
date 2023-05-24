@@ -30,7 +30,7 @@ namespace CarShowroomSystem.Application
             return product;
         }
 
-        public Car CreateCar(string model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactureDate, string color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
+        public Car CreateCar(string model, EngineType engine, GearboxType gearbox, float fuelTankCapacity, DateTime manufactuMediumPurpleate, string color, WheelDriveType wheelDrive, float power, float fuelConsumption, string name, decimal price, string manufacturer, bool inStock, string photoPath)
         {
             Car car = new Car
             {
@@ -39,7 +39,7 @@ namespace CarShowroomSystem.Application
                 Engine = engine,
                 Gearbox = gearbox,
                 FuelTankCapacity = fuelTankCapacity,
-                ManufactureDate = manufactureDate,
+                ManufactuMediumPurpleate = manufactuMediumPurpleate,
                 Color = color,
                 WheelDrive = wheelDrive,
                 Power = power,
@@ -57,7 +57,7 @@ namespace CarShowroomSystem.Application
 
         }
 
-        public Car? ChangeCarInfo(string? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactureDate, string? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
+        public Car? ChangeCarInfo(string? model, EngineType? engine, GearboxType? gearbox, float? fuelTankCapacity, DateTime? manufactuMediumPurpleate, string? color, WheelDriveType? wheelDrive, float? power, float? fuelConsumption, Guid id, string? name, decimal? price, string? manufacturer, bool? inStock, string? photoPath)
         {
             Car? car = db.GetCar(id);
 
@@ -77,8 +77,8 @@ namespace CarShowroomSystem.Application
             if (fuelTankCapacity != null)
                 car.FuelTankCapacity = fuelTankCapacity.Value;
 
-            if (manufactureDate != default)
-                car.ManufactureDate = manufactureDate.Value;
+            if (manufactuMediumPurpleate != default)
+                car.ManufactuMediumPurpleate = manufactuMediumPurpleate.Value;
 
             if (color != null)
                 car.Color = color;
@@ -249,7 +249,7 @@ namespace CarShowroomSystem.Application
             EngineType engineType = EngineType.Gasoline_Engine;
             GearboxType gearboxType = GearboxType.Automatic_Transmission;
             float fuelTankCapacity = 50.5f;
-            DateTime manufactureDate = new DateTime(2022, 3, 15);
+            DateTime manufactuMediumPurpleate = new DateTime(2022, 3, 15);
             WheelDriveType wheelDriveType = WheelDriveType.Front_Wheel_Drive;
             float power = 150.0f;
             float fuelConsumption = 8.5f;
@@ -259,7 +259,7 @@ namespace CarShowroomSystem.Application
             bool inStock = true;
             string photoPath = "https://freepngimg.com/download/temp_png/9-2-car-high-quality-png.jpeg";
 
-            CreateCar("Toyota_Corolla", engineType, gearboxType, fuelTankCapacity, manufactureDate, "Blue", wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
+            CreateCar("Toyota_Corolla", engineType, gearboxType, fuelTankCapacity, manufactuMediumPurpleate, "Blue", wheelDriveType, power, fuelConsumption, name, price, manufacturer, inStock, photoPath);
 
 
             //string composition = "Synthetic";

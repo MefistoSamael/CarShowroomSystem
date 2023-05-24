@@ -165,7 +165,7 @@
                HorizontalOptions="Start">
             </Label>
 
-            <!-- ManufactureDate -->
+            <!-- ManufactuMediumPurpleate -->
             <Label Grid.Row="12"
                Grid.Column="0"
                Style="{StaticResource Prompt}"
@@ -173,7 +173,7 @@
                HorizontalOptions="Center" />
             <Label Grid.Row="12"
                Grid.Column="1"
-               Text="{Binding ManufactureDate}"
+               Text="{Binding ManufactuMediumPurpleate}"
                WidthRequest="150"
                HorizontalOptions="Start">
             </Label>

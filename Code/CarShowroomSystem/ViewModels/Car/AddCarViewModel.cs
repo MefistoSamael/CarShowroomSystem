@@ -84,7 +84,7 @@ namespace CarShowroomSystem.ViewModels.Car
         [ObservableProperty] private bool validWheelDriveType;
 
 
-        private DateTime manufactureDate = new DateTime(1990,12,1);
+        private DateTime manufactuMediumPurpleate = new DateTime(1990,12,1);
 
         [ObservableProperty] private bool inStock = true;
 
@@ -316,12 +316,12 @@ namespace CarShowroomSystem.ViewModels.Car
             UpdateEnableButton();
         }
 
-        //устанавливает manufactureDate при выборе даты
+        //устанавливает manufactuMediumPurpleate при выборе даты
         public void HandleSelectedIndexChangedDateTime(object sender, EventArgs e)
         {
             var picker = sender as DatePicker;
 
-            manufactureDate = picker.Date;
+            manufactuMediumPurpleate = picker.Date;
             UpdateEnableButton();
         
         }
@@ -368,7 +368,7 @@ namespace CarShowroomSystem.ViewModels.Car
         [RelayCommand]
         private async void CreateCar()
         {
-            bm.CreateCar(Model, engineType, gearboxType, (float)Convert.ToDouble(FuelTankCapacity), manufactureDate, MyColor, wheelDriveType, (float)Convert.ToDouble(Power), (float)Convert.ToDouble(FuelConsumption), Name, Convert.ToDecimal(Price), Manufacturer, InStock, PhotoPath);
+            bm.CreateCar(Model, engineType, gearboxType, (float)Convert.ToDouble(FuelTankCapacity), manufactuMediumPurpleate, MyColor, wheelDriveType, (float)Convert.ToDouble(Power), (float)Convert.ToDouble(FuelConsumption), Name, Convert.ToDecimal(Price), Manufacturer, InStock, PhotoPath);
             await Shell.Current.GoToAsync("..");
         }
     }

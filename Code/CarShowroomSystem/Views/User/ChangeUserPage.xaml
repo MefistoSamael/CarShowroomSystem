@@ -68,7 +68,7 @@
                 Grid.Column="1"
                 Text="Save User"
                 Command="{Binding ChangeUserCommand}"
-                BackgroundColor="Red"
+                BackgroundColor="MediumPurple"
                 WidthRequest="200"
                 HorizontalOptions="Fill" />
         </Grid>

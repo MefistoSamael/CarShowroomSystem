@@ -61,7 +61,7 @@
             FontSize="13"
             IsVisible="{Binding ShowLogInErrorMessage}"
             Text="{Binding LogInErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center"
             Grid.ColumnSpan="2"/>
 
@@ -90,7 +90,7 @@
             FontSize="13"
             IsVisible="{Binding ShowPasswordErrorMessage}"
             Text="{Binding PasswordErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center"
             Grid.ColumnSpan="2"/>
     
@@ -101,7 +101,7 @@
             Command="{Binding SubmitCommand}"
             Style="{StaticResource LoginButton}"
             IsEnabled="{Binding EnableButton}"
-            Text="Submit" />
+            Text="Login" />
         <Button
             Grid.Row="4"
             Grid.Column="1"

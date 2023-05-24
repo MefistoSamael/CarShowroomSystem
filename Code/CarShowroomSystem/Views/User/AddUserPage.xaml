@@ -35,7 +35,7 @@
             FontSize="13"
             IsVisible="{Binding ShowLoginErrorMessage}"
             Text="{Binding LoginErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center" />
 
             <!--Password-->
@@ -64,7 +64,7 @@
             FontSize="13"
             IsVisible="{Binding ShowPasswordErrorMessage}"
             Text="{Binding PasswordErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center" />
 
             <!--FullName-->
@@ -93,7 +93,7 @@
             FontSize="13"
             IsVisible="{Binding ShowFullNameErrorMessage}"
             Text="{Binding FullNameErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center" />
 
             <!--Roles-->
@@ -122,7 +122,7 @@
             FontSize="13"
             IsVisible="{Binding ShowRoleErrorMessage}"
             Text="{Binding RoleErrorMessage}"
-            TextColor="Red"
+            TextColor="MediumPurple"
             HorizontalOptions="Center" />
 
 
@@ -131,7 +131,7 @@
             Grid.Column="1"
             Text="Save User"
             Command="{Binding SaveUserCommand}"
-            BackgroundColor="Red"
+            BackgroundColor="MediumPurple"
             WidthRequest="200"
             HorizontalOptions="Fill"
             IsEnabled="{Binding EnableButton}" />

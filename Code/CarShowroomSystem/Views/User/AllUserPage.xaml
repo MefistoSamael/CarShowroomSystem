@@ -8,7 +8,7 @@
     <Shell.TitleView>
         <Grid ColumnDefinitions="9*,1*">
             <Label x:Name="title" HorizontalOptions="Start" Grid.Column="0" VerticalTextAlignment="Center"/>
-            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
+            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="MediumPurple" HorizontalOptions="End"/>
         </Grid>
     </Shell.TitleView>
 
@@ -47,7 +47,7 @@
         <Button 
             Text="Delete User"
             Command ="{Binding DeleteUserCommand}"
-            BackgroundColor="Red"
+            BackgroundColor="MediumPurple"
             WidthRequest="200"
             HorizontalOptions="Fill">
         </Button>
@@ -55,21 +55,21 @@
         <Button 
             Text="View User"
             Command ="{Binding ViewUserCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 
         <Button 
             Text="Change User"
             Command ="{Binding ChangeUserCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 
         <Button 
             Text="Add User"
             Command ="{Binding AddUserCommand}"
-            BackgroundColor="Red"  
+            BackgroundColor="MediumPurple"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
 

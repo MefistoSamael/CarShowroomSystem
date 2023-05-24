@@ -11,7 +11,7 @@ namespace CarShowroomSystem.WinUI;
 public partial class App : MauiWinUIApplication
 {
 	/// <summary>
-	/// Initializes the singleton application object.  This is the first line of authored code
+	/// Initializes the singleton application object.  This is the first line of authoMediumPurple code
 	/// executed, and as such is the logical equivalent of main() or WinMain().
 	/// </summary>
 	public App()

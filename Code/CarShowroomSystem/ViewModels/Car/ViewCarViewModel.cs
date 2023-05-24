@@ -33,7 +33,7 @@ namespace CarShowroomSystem.ViewModels.Car
 
         [ObservableProperty] private string wheelDrive = null;
 
-        [ObservableProperty] private string manufactureDate = null;
+        [ObservableProperty] private string manufactuMediumPurpleate = null;
 
         [ObservableProperty] private string isInStock = null;
 
@@ -65,7 +65,7 @@ namespace CarShowroomSystem.ViewModels.Car
             Engine = selectedCar.Engine.ToString();
             Gearbox = selectedCar.Gearbox.ToString();
             WheelDrive = selectedCar.WheelDrive.ToString();
-            ManufactureDate = selectedCar.ManufactureDate.ToString();
+            ManufactuMediumPurpleate = selectedCar.ManufactuMediumPurpleate.ToString();
             IsInStock = selectedCar.InStock.ToString();
         }
 

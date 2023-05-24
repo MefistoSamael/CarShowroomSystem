@@ -9,7 +9,7 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>UIRequiredDeviceCapabilities</key>
+	<key>UIRequiMediumPurpleDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
 	</array>
