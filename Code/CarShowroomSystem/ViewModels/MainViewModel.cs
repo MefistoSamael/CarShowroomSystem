@@ -49,6 +49,10 @@ namespace CarShowroomSystem.ViewModels
             var tab = Shell.Current.FindByName("AddUserTab") as Tab;
             // и устанавливаем видимость панели работы с пользователем в соответствии с ролью пользователя
             tab.IsVisible = IsAdmin;
+
+            tab = Shell.Current.FindByName("AllOrderTab") as Tab;
+            tab.IsVisible = IsAdmin;
+
         }
 
         // нажатие на кнопку с напдписью Exit

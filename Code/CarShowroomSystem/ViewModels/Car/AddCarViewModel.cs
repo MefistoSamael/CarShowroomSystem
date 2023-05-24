@@ -21,54 +21,70 @@ namespace CarShowroomSystem.ViewModels.Car
         [ObservableProperty] private string modelErrorMessage;
         // переменная отвечающая за вывод лейбла ошибкм
         [ObservableProperty] private bool showModelErrorMessage;
+        [ObservableProperty] private bool validModel;
+
 
         // для всех остальных штук АНАЛогично
 
         [ObservableProperty] private string name = "";
         [ObservableProperty] private string nameErrorMessage;
+        [ObservableProperty] private bool validName;
         [ObservableProperty] private bool showNameErrorMessage;
 
         [ObservableProperty] private string manufacturer = "";
         [ObservableProperty] private string manufacturerErrorMessage;
         [ObservableProperty] private bool showManufacturerErrorMessage;
+        [ObservableProperty] private bool validManufacturer;
 
         [ObservableProperty] private string photoPath = "";
         [ObservableProperty] private string photoPathErrorMessage;
         [ObservableProperty] private bool showPhotoPathErrorMessage;
+        [ObservableProperty] private bool validPhotoPath;
 
         [ObservableProperty] private string myColor = "";
         [ObservableProperty] private string myColorErrorMessage;
         [ObservableProperty] private bool showMyColorErrorMessage;
+        [ObservableProperty] private bool validMyColor;
 
         [ObservableProperty] private string power = "";
         [ObservableProperty] private string powerErrorMessage;
         [ObservableProperty] private bool showPowerErrorMessage;
+        [ObservableProperty] private bool validPower;
+
 
         [ObservableProperty] private string fuelConsumption = "";
         [ObservableProperty] private string fuelConsumptionErrorMessage;
         [ObservableProperty] private bool showFuelConsumptionErrorMessage;
+        [ObservableProperty] private bool validFuelConsumption;
 
         [ObservableProperty] private string fuelTankCapacity = "";
         [ObservableProperty] private string fuelTankCapacityErrorMessage;
         [ObservableProperty] private bool showFuelTankCapacityErrorMessage;
+        [ObservableProperty] private bool validFuelTankCapacity;
+
 
         [ObservableProperty] private string price = "";
         [ObservableProperty] private string priceErrorMessage;
         [ObservableProperty] private bool showPriceErrorMessage;
+        [ObservableProperty] private bool validPrice;
 
         private EngineType engineType;
         [ObservableProperty] private string engineTypeErrorMessage = "*Chose Engine type";
         [ObservableProperty] private bool showEngineTypeErrorMessage = true;
+        [ObservableProperty] private bool validEngineType;
 
         private GearboxType gearboxType;
         [ObservableProperty] private string geraboxTypeErrorMessage = "*Chose Gearbox Type";
         [ObservableProperty] private bool showGeraboxTypeErrorMessage = true;
+        [ObservableProperty] private bool validGearboxType;
 
         private WheelDriveType wheelDriveType;
         [ObservableProperty] private string wheelDriveTypeErrorMessage = "*Chose WheelDrive Type";
         [ObservableProperty] private bool showWheelDriveTypeErrorMessage = true;
+        [ObservableProperty] private bool validWheelDriveType;
 
-        private DateTime manufactureDate = DateTime.Now;
+
+        private DateTime manufactureDate = new DateTime(1990,12,1);
 
         [ObservableProperty] private bool inStock = true;
 
@@ -91,6 +107,7 @@ namespace CarShowroomSystem.ViewModels.Car
             {
                 // не показываем лейбл с ошибкой
                 ShowModelErrorMessage = false;
+                ValidModel = true;
             }
             else
             {
@@ -98,6 +115,7 @@ namespace CarShowroomSystem.ViewModels.Car
                 ModelErrorMessage = "*Please enter a model";
                 // выводим лейбл
                 ShowModelErrorMessage = true;
+                ValidModel = false;
             }
 
             // устанавливаем поле, отвечающее за работоспособность кнопки
@@ -111,11 +129,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(Name))
             {
                 ShowNameErrorMessage = false;
+                ValidName = true;
             }
             else
             {
                 NameErrorMessage = "*Please enter a name";
                 ShowNameErrorMessage = true;
+                ValidName = false;
             }
 
             UpdateEnableButton();
@@ -128,11 +148,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(Manufacturer))
             {
                 ShowManufacturerErrorMessage = false;
+                ValidManufacturer = true;
             }
             else
             {
                 ManufacturerErrorMessage = "*Please enter a manufacturer";
                 ShowManufacturerErrorMessage = true;
+                ValidManufacturer = false;
             }
 
             UpdateEnableButton();
@@ -145,11 +167,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(PhotoPath))
             {
                 ShowPhotoPathErrorMessage = false;
+                ValidPhotoPath = true;
             }
             else
             {
                 PhotoPathErrorMessage = "*Please enter a photo path";
                 ShowPhotoPathErrorMessage = true;
+                ValidPhotoPath = false;
             }
 
             UpdateEnableButton();
@@ -162,11 +186,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(MyColor))
             {
                 ShowMyColorErrorMessage = false;
+                ValidMyColor = true;
             }
             else
             {
                 MyColorErrorMessage = "*Please enter a color";
                 ShowMyColorErrorMessage = true;
+                ValidMyColor = false;
             }
 
             UpdateEnableButton();
@@ -179,11 +205,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(Power) && IsDigit(Power))
             {
                 ShowPowerErrorMessage = false;
+                ValidPower = true;
             }
             else
             {
                 PowerErrorMessage = "*Please enter a valid power value";
                 ShowPowerErrorMessage = true;
+                ValidPower = false;
             }
 
             UpdateEnableButton();
@@ -198,11 +226,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(FuelConsumption) && IsDigit(FuelConsumption))
             {
                 ShowFuelConsumptionErrorMessage = false;
+                ValidFuelConsumption = true;
             }
             else
             {
                 FuelConsumptionErrorMessage = "*Please enter a valid fuel consumption value";
                 ShowFuelConsumptionErrorMessage = true;
+                ValidFuelConsumption = false;
             }
 
             UpdateEnableButton();
@@ -215,11 +245,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(FuelTankCapacity) && IsDigit(FuelTankCapacity))
             {
                 ShowFuelTankCapacityErrorMessage = false;
+                ValidFuelTankCapacity = true;
             }
             else
             {
                 FuelTankCapacityErrorMessage = "*Please enter a valid fuel tank capacity value";
                 ShowFuelTankCapacityErrorMessage = true;
+                ValidFuelTankCapacity = false;
             }
 
             UpdateEnableButton();
@@ -233,11 +265,13 @@ namespace CarShowroomSystem.ViewModels.Car
             if (!string.IsNullOrEmpty(Price) && IsDigit(Price))
             {
                 ShowPriceErrorMessage = false;
+                ValidPrice = true;
             }
             else
             {
                 PriceErrorMessage = "*Please enter a valid price";
                 ShowPriceErrorMessage = true;
+                ValidPrice = false;
             }
 
             UpdateEnableButton();
@@ -256,6 +290,8 @@ namespace CarShowroomSystem.ViewModels.Car
 
             engineType = (EngineType)picker.SelectedIndex;
             ShowEngineTypeErrorMessage = false;
+            ValidEngineType = true;
+            UpdateEnableButton();
         }
 
         // устанавливает gearboxType при выборе элемента в Picker
@@ -265,6 +301,8 @@ namespace CarShowroomSystem.ViewModels.Car
 
             gearboxType = (GearboxType)picker.SelectedIndex;
             ShowGeraboxTypeErrorMessage = false;
+            ValidGearboxType = true;
+            UpdateEnableButton();
         }
 
         //устанавливает wheelDriveType при выборе элемента в Picker
@@ -274,6 +312,8 @@ namespace CarShowroomSystem.ViewModels.Car
 
             wheelDriveType = (WheelDriveType)picker.SelectedIndex;
             ShowWheelDriveTypeErrorMessage = false;
+            ValidWheelDriveType = true;
+            UpdateEnableButton();
         }
 
         //устанавливает manufactureDate при выборе даты
@@ -282,6 +322,8 @@ namespace CarShowroomSystem.ViewModels.Car
             var picker = sender as DatePicker;
 
             manufactureDate = picker.Date;
+            UpdateEnableButton();
+        
         }
 
         public void HandleCheckedChanged(object sender, EventArgs e)
@@ -294,18 +336,19 @@ namespace CarShowroomSystem.ViewModels.Car
         //обновляет enableButton в соответствии с введенными данными
         private void UpdateEnableButton()
         {
-            EnableButton = (ShowModelErrorMessage &&
-                    ShowNameErrorMessage &&
-                    ShowManufacturerErrorMessage &&
-                    ShowPhotoPathErrorMessage &&
-                    ShowMyColorErrorMessage &&
-                    ShowPowerErrorMessage &&
-                    ShowFuelConsumptionErrorMessage &&
-                    ShowFuelTankCapacityErrorMessage &&
-                    ShowPriceErrorMessage &&
-                    ShowEngineTypeErrorMessage &&
-                    ShowGeraboxTypeErrorMessage &&
-                    ShowWheelDriveTypeErrorMessage);
+            EnableButton = ValidModel &&
+                ValidMyColor &&
+                ValidName &&
+                ValidPhotoPath &&
+                ValidPower &&
+                ValidPrice &&
+                ValidWheelDriveType &&
+                ValidEngineType &&
+                ValidGearboxType &&
+                ValidManufacturer &&
+                ValidEngineType &&
+                ValidFuelTankCapacity &&
+                ValidFuelConsumption;
         }
 
         // проверяет на то, является ли переданная строка числом

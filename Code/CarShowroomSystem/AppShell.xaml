@@ -53,8 +53,15 @@
                 Title="Order Page"
                 ContentTemplate="{DataTemplate order:OrderPage}"
                 Route="ordermain"/>
-
         </Tab>
+        <Tab x:Name="AllOrderTab"
+             Title="AllOrders">
+            <ShellContent
+                Shell.PresentationMode="NotAnimated"
+                Title="All Order Page"
+                ContentTemplate="{DataTemplate order:AllOrderPage}"/>
+        </Tab>
+
     </TabBar>
 
 

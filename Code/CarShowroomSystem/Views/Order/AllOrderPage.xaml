@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CarShowroomSystem.Views.Order.OrderPage"
-             Title="OrderPage">
-
+             x:Class="CarShowroomSystem.Views.Order.AllOrderPage"
+             Title="AllOrderPage">
     <!--кнопка для выхода из аккаунта-->
     <Shell.TitleView>
         <Grid ColumnDefinitions="9*,1*">
@@ -69,7 +68,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+
         <!--Probably TODO-->
         <!--<Button
             Text="Change Order"
@@ -80,19 +79,10 @@
             IsVisible="{Binding IsAdmin}"/>-->
 
         <Button 
-            Text="Return order"
-            Command ="{Binding ReturnOrderCommand}"
-            BackgroundColor="Red"
-            WidthRequest="200"
-            HorizontalOptions="Fill">
-        </Button>
-
-        <Button 
             Text="View order"
             Command ="{Binding ViewOrderCommand}"
             BackgroundColor="Red"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
     </HorizontalStackLayout>
-
 </ContentPage>

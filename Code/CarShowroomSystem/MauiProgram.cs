@@ -43,6 +43,7 @@ public static class MauiProgram
         builder.Services.AddTransient<BucketViewModel>();
         builder.Services.AddTransient<OrderViewModel>();
         builder.Services.AddTransient<ViewOrderViewModel>();
+        builder.Services.AddTransient<AllOrderViewModel>();
 
 
         //pages
@@ -58,7 +59,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AllUserPage>();
         builder.Services.AddTransient<BucketPage>();
         builder.Services.AddTransient<OrderPage>();
-        builder.Services.AddTransient<ViewOrderPage>();
+        builder.Services.AddTransient<AllOrderPage>();
 
         //model
         builder.Services.AddSingleton<IModel, Model.Model>();

@@ -23,6 +23,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("bucketpage", typeof(BucketPage));
         Routing.RegisterRoute("orderpage", typeof(OrderPage));
         Routing.RegisterRoute("vieworderpage", typeof(ViewOrderPage));
+        Routing.RegisterRoute("allorderpage", typeof(AllOrderPage));
 
         InitializeComponent();
 	}
