@@ -11,7 +11,7 @@ public partial class CreateAccountPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = vm;
-	}
+		}
 
     private void Button_Clicked(object sender, EventArgs e)
     {

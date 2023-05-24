@@ -16,12 +16,10 @@
         Title="Login Page"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="login"/>
-
     <TabBar>
         <Tab Title="Product">
             <ShellContent
             Shell.PresentationMode="NotAnimated"
-<<<<<<< HEAD
             Title="MainPage"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="main"/>
@@ -29,15 +27,6 @@
         <Tab x:Name="AddUserTab"
             Title="Users">
             <ShellContent
-=======
-            Title="Main Page"
-            ContentTemplate="{DataTemplate views:MainPage}"
-            Route="main"/>
-        </Tab>
-        <Tab x:Name="AddUserTab"
-            Title="Users">
-            <ShellContent
->>>>>>> e435b7de3a04e0553ce7e62322dcb33d3ab3f4b1
                 Shell.PresentationMode="NotAnimated"
                 Title="All User Page"
                 ContentTemplate="{DataTemplate user:AllUserPage}"
@@ -45,7 +34,6 @@
             <!--<ShellContent
                 Shell.PresentationMode="NotAnimated"
                 Title="Add User Page"
-<<<<<<< HEAD
                 ContentTemplate="{DataTemplate user:AddUserPage}"/>-->
 
         </Tab>
@@ -67,11 +55,6 @@
 
         </Tab>
 
-=======
-                ContentTemplate="{DataTemplate user:AddUserPage}"/>-->
-
-        </Tab>
->>>>>>> e435b7de3a04e0553ce7e62322dcb33d3ab3f4b1
     </TabBar>
 
 
