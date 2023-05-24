@@ -175,17 +175,39 @@ namespace CarShowroomSystem.ViewModels
                 RefrechObservableCollection();
 
             }
+        }
+
+        [RelayCommand]
+        private async void BuyProduct()
+        {
+            if (selectedProduct == null)
+                await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("No Selection", $"You need to select, which product to buy", "ok");
+            else
+            {
+                string result = await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayPromptAsync("Buy", "How many items do you want to buy?", initialValue: "1", maxLength: 2, keyboard: Keyboard.Numeric);
+                int count = 0;
+                try
+                {
+                    count = Convert.ToInt32(result);
+                }
+                catch 
+                {
+                    await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Invalid input", "Enter only numbers", "ok");
+                    return;
+                }
+
+                model.AddProductInBucket(selectedProduct.Id, count);
+            }
 
         }
 
 
-            // обраюотка изменения выбранного элемента в CollectionView
-            // просто запихуивает выбранный товар в поле selectedProduct
-            // оно нужно для действий по добавлению и удалению товара
-            //
-            // почему я не сделал вызова свойств SelectedItem у CollectionView на прямую?
-            // потому что я не знаю как его получить из кода ViewModel по-другому
-            [RelayCommand]
+        // обраюотка изменения выбранного элемента в CollectionView
+        // просто запихуивает выбранный товар в поле selectedProduct
+        // оно нужно для действий по добавлению и удалению товара
+        // почему я не сделал вызова свойств SelectedItem у CollectionView на прямую?
+        // потому что я не знаю как его получить из кода ViewModel по-другому
+        [RelayCommand]
         private void HandleSelectionChanged(object SelectedItem)
         {
             selectedProduct = SelectedItem as Product;
@@ -224,3 +246,4 @@ namespace CarShowroomSystem.ViewModels
         }
     }
 }
+

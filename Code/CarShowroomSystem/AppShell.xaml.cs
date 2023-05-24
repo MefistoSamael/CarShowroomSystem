@@ -1,6 +1,7 @@
 ﻿using CarShowroomSystem.Views;
 using CarShowroomSystem.Views.User;
 using CarShowroomSystem.Views.Car;
+using CarShowroomSystem.Views.Order;
 
 namespace CarShowroomSystem;
 
@@ -19,6 +20,9 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("changeuserpage", typeof(ChangeUserPage));
         Routing.RegisterRoute("viewuserpage", typeof(ViewUserPage));
         Routing.RegisterRoute("alluserpage", typeof(AllUserPage));
+        Routing.RegisterRoute("bucketpage", typeof(BucketPage));
+        Routing.RegisterRoute("orderpage", typeof(OrderPage));
+        Routing.RegisterRoute("vieworderpage", typeof(ViewOrderPage));
 
         InitializeComponent();
 	}

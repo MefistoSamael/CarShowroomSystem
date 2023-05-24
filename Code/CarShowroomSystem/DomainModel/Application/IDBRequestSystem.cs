@@ -160,7 +160,33 @@ namespace CarShowroomSystem.Application
 
         public Product? GetProductByGuid(Guid id)
         {
-            return products.FirstOrDefault(t => t.Id == id);
+            Product product;
+
+            try
+            {
+                product = tireses.First(t => t.Id == id);
+            }
+            catch
+            {
+                try
+                {
+                    product = cars.First(t => t.Id == id);
+                }
+                catch
+                {
+                    try
+                    {
+                        product = engineOils.First(t => t.Id == id);
+
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+            
+            return product;
         }
 
         public bool ContainsProductById(Guid id)
