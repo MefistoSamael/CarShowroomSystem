@@ -7,6 +7,7 @@
     xmlns:views="clr-namespace:CarShowroomSystem.Views"
     xmlns:car="clr-namespace:CarShowroomSystem.Views.Car"
     xmlns:user="clr-namespace:CarShowroomSystem.Views.User"
+    xmlns:order="clr-namespace:CarShowroomSystem.Views.Order"
     Shell.PresentationMode="NotAnimated"
     Shell.FlyoutBehavior="Disabled">
 
@@ -19,7 +20,7 @@
         <Tab Title="Product">
             <ShellContent
             Shell.PresentationMode="NotAnimated"
-            Title="Main Page"
+            Title="MainPage"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="main"/>
         </Tab>
@@ -34,6 +35,23 @@
                 Shell.PresentationMode="NotAnimated"
                 Title="Add User Page"
                 ContentTemplate="{DataTemplate user:AddUserPage}"/>-->
+
+        </Tab>
+        <Tab x:Name="BucketTab"
+             Title="Bucket">
+            <ShellContent
+                Shell.PresentationMode="NotAnimated"
+                Title="Bucket Page"
+                ContentTemplate="{DataTemplate views:BucketPage}"
+                Route="bucketmain"/>
+        </Tab>
+        <Tab x:Name="OrderTab"
+             Title="Orders">
+            <ShellContent
+                Shell.PresentationMode="NotAnimated"
+                Title="Order Page"
+                ContentTemplate="{DataTemplate order:OrderPage}"
+                Route="ordermain"/>
 
         </Tab>
 

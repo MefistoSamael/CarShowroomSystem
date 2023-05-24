@@ -294,7 +294,7 @@ namespace CarShowroomSystem.ViewModels.Car
         //обновляет enableButton в соответствии с введенными данными
         private void UpdateEnableButton()
         {
-            EnableButton = !(ShowModelErrorMessage &&
+            EnableButton = (ShowModelErrorMessage &&
                     ShowNameErrorMessage &&
                     ShowManufacturerErrorMessage &&
                     ShowPhotoPathErrorMessage &&

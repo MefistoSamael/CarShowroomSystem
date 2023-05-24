@@ -67,7 +67,7 @@
             HorizontalOptions="Fill"/>
 
         <Button 
-            Text="Change User"
+            Text="Add User"
             Command ="{Binding AddUserCommand}"
             BackgroundColor="Red"  
             WidthRequest="200"

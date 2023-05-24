@@ -1,21 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Shell.PresentationMode="NotAnimated"
-             Title="Main Page"
-             x:Class="CarShowroomSystem.Views.MainPage">
-
-    <!--кнопка для выхода из аккаунта-->
-    <Shell.TitleView>
-        <Grid ColumnDefinitions="9*,1*">
-            <Label x:Name="title" HorizontalOptions="Start" Grid.Column="0" VerticalTextAlignment="Center"/>
-            <Button Text="Exit" Grid.Column="1" Command="{Binding ExitCommand}" BackgroundColor="Red" HorizontalOptions="End"/>
-        </Grid>
-    </Shell.TitleView>
-    
+             x:Class="CarShowroomSystem.Views.BucketPage"
+             xmlns:model="clr-namespace:CarShowroomSystem.Model"
+             Title="BucketPage">
     <HorizontalStackLayout>
         <CollectionView 
-            ItemsSource="{Binding Products}"
+            ItemsSource="{Binding Bucket}"
             WidthRequest="500"
             x:Name="FriendsList"
             SelectionMode="Single"
@@ -33,16 +24,16 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Image Grid.RowSpan="2"
-                           Source="{Binding PhotoPath}"
+                           Source="{Binding Prod.PhotoPath}"
                            Aspect="AspectFill"
                            HeightRequest="100"
                            WidthRequest="100" />
                         <Label Grid.Column="1"
-                           Text="{Binding Name}"
+                           Text="{Binding Prod.Name}"
                            FontAttributes="Bold" />
                         <Label Grid.Row="1"
                            Grid.Column="1"
-                           Text="{Binding Price}"
+                           Text="{Binding Count}"
                            FontAttributes="Italic"
                            VerticalOptions="End" />
                     </Grid>
@@ -50,44 +41,23 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button 
-            Text="Add Product"
-            Command ="{Binding AddProductCommand}"
-            BackgroundColor="Red"  
-            WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}"/>
-        <Button
-            Text="Change Product"
-            Command ="{Binding ChangeProductCommand}"
-            BackgroundColor="Red"
-            WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}"/>
-
-        <Button 
             Text="Delete Product"
             Command ="{Binding DeleteProductCommand}"
-            BackgroundColor="Red"
-            WidthRequest="200"
-            HorizontalOptions="Fill"
-            IsVisible="{Binding IsAdmin}">
-        </Button>
-        
-        <Button 
-            Text="View Product"
-            Command ="{Binding ViewProductCommand}"
             BackgroundColor="Red"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
-
         <Button 
-            Text="Buy Product"
-            Command ="{Binding BuyProductCommand}"
+            Text="Change count of Product"
+            Command ="{Binding ChangeCountCommand}"
             BackgroundColor="Red"  
             WidthRequest="200"
             HorizontalOptions="Fill"/>
-
+        <Button 
+            Text="Create order"
+            Command ="{Binding CreateOrderCommand}"
+            BackgroundColor="Red"  
+            WidthRequest="200"
+            HorizontalOptions="Fill"/>
 
     </HorizontalStackLayout>
-
 </ContentPage>

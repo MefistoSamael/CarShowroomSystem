@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarShowroomSystem.Views.Order.ViewOrderPage"
+             Title="ViewOrderPagexaml">
+    <HorizontalStackLayout>
+        <CollectionView 
+            ItemsSource="{Binding Bucket}"
+            WidthRequest="500"
+            x:Name="FriendsList"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10"
+                          RowSpacing="10"
+                          ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                           Source="{Binding Prod.PhotoPath}"
+                           Aspect="AspectFill"
+                           HeightRequest="100"
+                           WidthRequest="100" />
+                        <Label Grid.Column="1"
+                           Text="{Binding Prod.Name}"
+                           FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Count}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                RowDefinitions="*,*"
+              ColumnSpacing="10">
+            <!--CreatorUserName-->
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Creator user name"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Text="{Binding CreatorUserName}"/>
+
+            <!--BuyerFullName-->
+            <Label Grid.Row="1"
+                Grid.Column="0"
+                Text="Buyer Full Name"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{Binding BuyerFullName}"/>
+
+            <!--CreationTime-->
+            <Label Grid.Row="0"
+                Grid.Column="2"
+                Text="Creation time"/>
+            <Label Grid.Row="0"
+                   Grid.Column="3"
+                   Text="{Binding CreationTime}"/>
+
+            <!-- CreationTime -->
+            <Label Grid.Row="1"
+           Grid.Column="2"
+           Text="Creation time" />
+            <Label Grid.Row="1"
+           Grid.Column="3"
+           Text="{Binding CreationTime}" />
+
+            <!-- CancellationTime -->
+            <Label Grid.Row="0"
+           Grid.Column="4"
+           Text="Cancellation time" />
+            <Label Grid.Row="0"
+           Grid.Column="5"
+           Text="{Binding CancellationTime}" />
+
+            <!-- State -->
+            <Label Grid.Row="1"
+           Grid.Column="4"
+           Text="State" />
+            <Label Grid.Row="1"
+           Grid.Column="5"
+           Text="{Binding State}" />
+
+            <!-- Price -->
+            <Label Grid.Row="0"
+           Grid.Column="6"
+           Text="Price" />
+            <Label Grid.Row="0"
+           Grid.Column="7"
+           Text="{Binding Price}" />
+        </Grid>
+    </HorizontalStackLayout>
+</ContentPage>

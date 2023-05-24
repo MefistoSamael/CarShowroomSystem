@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public enum Roles
 {
-    customer =0,
+    customer = 0,
     seller = 1,
     admin = 2,
 }
